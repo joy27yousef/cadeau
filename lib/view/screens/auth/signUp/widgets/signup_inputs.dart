@@ -1,5 +1,6 @@
 import 'package:cadeau/view/widgets/TextFormGen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class SignupInputs extends StatelessWidget {
   const SignupInputs({super.key});
@@ -9,37 +10,33 @@ class SignupInputs extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Full Name', style: Theme.of(context).textTheme.titleSmall),
+        Text('29'.tr, style: Theme.of(context).textTheme.titleSmall),
         SizedBox(height: 10),
-        TextFormGen(
-          hint: '',
-          lable: 'Enter full name',
-          typekey: TextInputType.name,
-        ),
+        TextFormGen(hint: '', lable: '30'.tr, typekey: TextInputType.name),
         SizedBox(height: 20),
-        Text('Email Address', style: Theme.of(context).textTheme.titleSmall),
+        Text('4'.tr, style: Theme.of(context).textTheme.titleSmall),
         SizedBox(height: 10),
         TextFormGen(
           hint: '',
-          lable: 'email@gmail.com',
+          lable: '7'.tr,
           typekey: TextInputType.emailAddress,
         ),
         SizedBox(height: 20),
-        Text('Gender', style: Theme.of(context).textTheme.titleSmall),
+        Text('31'.tr, style: Theme.of(context).textTheme.titleSmall),
         SizedBox(height: 10),
         TextFormGen(
           hint: '',
-          lable: 'email@gmail.com',
+          lable: '7'.tr,
           typekey: TextInputType.emailAddress,
         ),
         SizedBox(height: 20),
 
-        Text('Phone Number', style: Theme.of(context).textTheme.titleSmall),
+        Text('3'.tr, style: Theme.of(context).textTheme.titleSmall),
         SizedBox(height: 10),
-        TextFormGen(hint: '', lable: '+966', typekey: TextInputType.phone),
+        TextFormGen(hint: '', lable: '11'.tr, typekey: TextInputType.phone),
         SizedBox(height: 20),
 
-        Text('Password', style: Theme.of(context).textTheme.titleSmall),
+        Text('21'.tr, style: Theme.of(context).textTheme.titleSmall),
         SizedBox(height: 10),
         TextFormGen(hint: '', lable: '*******', typekey: TextInputType.text),
         SizedBox(height: 30),

@@ -1,5 +1,6 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class TitleHome extends StatelessWidget {
   final String text;
@@ -32,7 +33,7 @@ class TitleHome extends StatelessWidget {
             onTap: onTap,
             borderRadius: BorderRadius.circular(15),
             child: Text(
-              'View All',
+              '111'.tr,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.w400,
                 color: AppColor.secondBlack,

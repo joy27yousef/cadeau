@@ -3,6 +3,7 @@ import 'package:cadeau/view/screens/auth/forgotPassword/reset/widgets/re_inputs.
 import 'package:cadeau/view/widgets/appbar_screens.dart';
 import 'package:cadeau/view/widgets/boxText.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class EditPaymentPage extends StatelessWidget {
   const EditPaymentPage({super.key});
@@ -10,58 +11,58 @@ class EditPaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarScreens(title: 'Edit Payment Form'),
+      appBar: AppbarScreens(title: '82'.tr),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: ListView(
           children: [
             ReInputs(
-              text: 'Email Address',
-              lable: 'example@gmail.com',
+              text: '4'.tr,
+              lable: '7'.tr,
               keyboard: TextInputType.emailAddress,
               withSpace: false,
             ),
             ReInputs(
-              text: 'Street',
+              text: '83'.tr,
               lable: '',
               keyboard: TextInputType.text,
               withSpace: false,
             ),
             ReInputs(
-              text: 'Phone',
+              text: '3'.tr,
               lable: '+966',
               keyboard: TextInputType.phone,
               withSpace: false,
             ),
             ReInputs(
-              text: 'State',
+              text: '84'.tr,
               lable: '',
               keyboard: TextInputType.text,
               withSpace: false,
             ),
             ReInputs(
-              text: 'Postal Code',
+              text: '85'.tr,
               withSpace: false,
               lable: '',
               keyboard: TextInputType.text,
             ),
             ReInputs(
-              text: 'Name',
+              text: '41'.tr,
               withSpace: false,
-              lable: 'John',
+              lable: '86'.tr,
               keyboard: TextInputType.text,
             ),
             ReInputs(
-              text: 'Surname',
+              text: '87'.tr,
               withSpace: false,
-              lable: 'json',
+              lable: '86'.tr,
               keyboard: TextInputType.text,
             ),
             SizedBox(height: 30),
             Boxtext(
               color: AppColor.mainColor,
               ontapfun: () {},
-              text: 'Save Changes',
+              text: '88'.tr,
             ),
             SizedBox(height: 30),
           ],

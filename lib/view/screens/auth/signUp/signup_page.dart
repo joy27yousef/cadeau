@@ -2,6 +2,7 @@ import 'package:cadeau/view/screens/auth/signUp/widgets/signup_bottom.dart';
 import 'package:cadeau/view/screens/auth/signUp/widgets/signup_inputs.dart';
 import 'package:cadeau/view/widgets/welcome_part.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -13,11 +14,7 @@ class SignupPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: ListView(
           children: [
-            WelcomePart(
-              withImage: true,
-              text1: 'Welcome Back,',
-              text2: 'Welcome back to our store',
-            ),
+            WelcomePart(withImage: true, text1: '12'.tr, text2: '13'.tr),
             SignupInputs(),
             SignupBottom(),
           ],

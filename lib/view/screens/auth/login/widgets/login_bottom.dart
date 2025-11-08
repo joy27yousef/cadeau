@@ -21,7 +21,7 @@ class LoginBottom extends StatelessWidget {
               onTap: () => Get.offNamed(AppRoutes.forgotpassword),
               borderRadius: BorderRadius.circular(20),
               child: Text(
-                'Forgot Password ?',
+                '14'.tr,
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.w500,
                   color: AppColor.mainColor,
@@ -37,13 +37,13 @@ class LoginBottom extends StatelessWidget {
           ontapfun: () {
             Get.offAllNamed(AppRoutes.mainPage);
           },
-          text: 'Log in',
+          text: '15'.tr,
         ),
         SizedBox(height: 18),
         Row(
           children: [
             Text(
-              'Don’t have an account? ',
+              '16'.tr,
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: AppColor.darkGray,
                 fontWeight: FontWeight.w400,
@@ -53,7 +53,7 @@ class LoginBottom extends StatelessWidget {
               onTap: () => Get.offNamed(AppRoutes.signup),
               borderRadius: BorderRadius.circular(20),
               child: Text(
-                'Click here to sigup',
+                '17'.tr,
 
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   color: AppColor.mainColor,
@@ -72,7 +72,7 @@ class LoginBottom extends StatelessWidget {
           children: [
             Container(width: 80, height: 1, color: AppColor.mainColor),
             Text(
-              'OR LOG IN WITH',
+              '18'.tr,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontSize: 14,
                 color: AppColor.secondBlack,
@@ -99,7 +99,7 @@ class LoginBottom extends StatelessWidget {
                   Image.asset(AppImages.google, width: 15),
                   SizedBox(width: 5),
                   Text(
-                    'Google',
+                    '19'.tr,
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       color: AppColor.secondBlack,
                       fontWeight: FontWeight.w300,
@@ -127,7 +127,7 @@ class LoginBottom extends StatelessWidget {
                   SizedBox(width: 5),
 
                   Text(
-                    'Facebook',
+                    '20'.tr,
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       color: AppColor.secondBlack,
                       fontWeight: FontWeight.w300,

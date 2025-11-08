@@ -1,6 +1,7 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/view/screens/cart/widgets/summart_price.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 class CartSummary extends StatelessWidget {
   const CartSummary({super.key});
@@ -12,7 +13,7 @@ class CartSummary extends StatelessWidget {
       children: [
         SizedBox(height: 25),
         Text(
-          'Summary',
+          '59'.tr,
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontWeight: FontWeight.w500,
             fontSize: 16,
@@ -20,15 +21,15 @@ class CartSummary extends StatelessWidget {
           ),
         ),
         SizedBox(height: 20),
-        SummartPrice(title: 'Products', price: '200 \$'),
-        SummartPrice(title: 'Vat', price: '200 \$'),
-        SummartPrice(title: 'Valet Number', price: '200 \$'),
-        SummartPrice(title: 'Song', price: '200 \$'),
-        SummartPrice(title: 'Total', price: '200 \$'),
+        SummartPrice(title: '58'.tr, price: '200 \$'),
+        SummartPrice(title: '60'.tr, price: '200 \$'),
+        SummartPrice(title: '61'.tr, price: '200 \$'),
+        SummartPrice(title: '62'.tr, price: '200 \$'),
+        SummartPrice(title: '63'.tr, price: '200 \$'),
         SizedBox(height: 10),
         Divider(color: Colors.grey.shade300),
         SizedBox(height: 10),
-        SummartPrice(title: 'Total', price: '200 \$', istotal: true),
+        SummartPrice(title: '63'.tr, price: '200 \$', istotal: true),
         SizedBox(height: 40),
       ],
     );

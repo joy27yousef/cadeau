@@ -13,7 +13,7 @@ class HomeBrands extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TitleHome(
-          text: 'Shop By Brand',
+          text: '75'.tr,
           viewAll: true,
           onTap: () {
             Get.toNamed(AppRoutes.allBrands);

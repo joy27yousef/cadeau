@@ -27,7 +27,7 @@ class HomeSearchPart extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    'Find your gift',
+                    '72'.tr,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w300,
                       color: AppColor.secondBlack,

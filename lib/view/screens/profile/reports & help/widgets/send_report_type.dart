@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class SendReportType extends StatelessWidget {
   const SendReportType({super.key});
@@ -16,7 +17,7 @@ class SendReportType extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Delivery',
+              '92'.tr,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
@@ -35,7 +36,7 @@ class SendReportType extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Finance',
+              '93'.tr,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
@@ -55,7 +56,7 @@ class SendReportType extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Other',
+              '94'.tr,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,

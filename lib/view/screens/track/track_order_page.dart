@@ -2,6 +2,7 @@ import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/view/screens/track/order_dit.dart';
 import 'package:cadeau/view/widgets/appbar_screens.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TrackOrderPage extends StatelessWidget {
@@ -29,17 +30,17 @@ class TrackOrderPage extends StatelessWidget {
                     ),
                   ),
                   OrderDit(
-                    title: 'Receiver Name: ',
+                    title: '104'.tr,
                     text: 'Joy',
                     icon: Iconsax.profile_tick,
                   ),
                   OrderDit(
-                    title: 'Delivery Date:',
+                    title: '105'.tr,
                     text: '15-05-2022',
                     icon: Iconsax.calendar_1,
                   ),
                   OrderDit(
-                    title: 'Status:',
+                    title: '106',
                     text: 'Orde Canceled',
                     icon: Iconsax.status,
                   ),

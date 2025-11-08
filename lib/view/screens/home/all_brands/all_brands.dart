@@ -3,6 +3,7 @@ import 'package:cadeau/view/widgets/appbar_screens.dart';
 
 import 'package:cadeau/view/widgets/product_allpage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class AllBrands extends StatelessWidget {
   const AllBrands({super.key});
@@ -10,7 +11,7 @@ class AllBrands extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarScreens(title: 'Brands'),
+      appBar: AppbarScreens(title: '65'.tr),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(

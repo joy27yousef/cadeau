@@ -3,6 +3,7 @@ import 'package:cadeau/core/constant/app_images.dart';
 import 'package:cadeau/view/widgets/boxText.dart';
 import 'package:cadeau/view/widgets/title_home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class HomeOnlyforu extends StatelessWidget {
   const HomeOnlyforu({super.key});
@@ -12,7 +13,7 @@ class HomeOnlyforu extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleHome(text: 'Only For You'),
+        TitleHome(text: '80'.tr),
         SizedBox(height: 15),
         Container(
           height: 130,
@@ -77,7 +78,7 @@ class HomeOnlyforu extends StatelessWidget {
                       child: Boxtext(
                         color: AppColor.mainColor,
                         ontapfun: () {},
-                        text: 'View Details',
+                        text: '81'.tr,
                       ),
                     ),
                   ],

@@ -13,23 +13,20 @@ class ResetpasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarScreens(title: 'Reset Password'),
+      appBar: AppbarScreens(title: '22'.tr),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            WelcomePart(
-              text1: 'Set New Password',
-              text2: 'Please enter your new password',
-            ),
+            WelcomePart(text1: '23'.tr, text2: '24'.tr),
             ReInputs(
-              text: 'Password',
+              text: '21'.tr,
               lable: '********',
               keyboard: TextInputType.text,
             ),
             ReInputs(
-              text: 'Confirm Password',
+              text: '25'.tr,
               lable: '********',
               keyboard: TextInputType.text,
             ),
@@ -38,7 +35,7 @@ class ResetpasswordPage extends StatelessWidget {
               ontapfun: () {
                 Get.toNamed(AppRoutes.login);
               },
-              text: 'Set New Password',
+              text: '23'.tr,
             ),
           ],
         ),

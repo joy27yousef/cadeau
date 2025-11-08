@@ -6,6 +6,9 @@ import 'package:cadeau/view/screens/auth/login/login_page.dart';
 import 'package:cadeau/view/screens/auth/resetPassword/resetpassword_page.dart';
 import 'package:cadeau/view/screens/auth/signUp/signup_page.dart';
 import 'package:cadeau/view/screens/auth/verification/verification_page.dart';
+import 'package:cadeau/view/screens/cart/checkout/checkout_page.dart';
+import 'package:cadeau/view/screens/cart/complete%20payment/complete_ayment_page.dart';
+import 'package:cadeau/view/screens/cart/success_pay.dart';
 import 'package:cadeau/view/screens/home/all_brands/all_brands.dart';
 import 'package:cadeau/view/screens/home/all_occasions/all_ocassion_page.dart';
 import 'package:cadeau/view/screens/home/product/product_page.dart';
@@ -16,6 +19,7 @@ import 'package:cadeau/view/screens/profile/edit_profile/edit_profile_page.dart'
 import 'package:cadeau/view/screens/profile/reports%20&%20help/help_page.dart';
 import 'package:cadeau/view/screens/profile/reports%20&%20help/reports_help_page.dart';
 import 'package:cadeau/view/screens/profile/reports%20&%20help/send_report_page.dart';
+import 'package:cadeau/view/screens/profile/settings/settings_page.dart';
 import 'package:cadeau/view/screens/wishlist/wishlist_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -47,4 +51,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.reportsHelpPage, page: () => ReportsHelpPage()),
   GetPage(name: AppRoutes.helpPage, page: () => HelpPage()),
   GetPage(name: AppRoutes.sendReportPage, page: () => SendReportPage()),
+  GetPage(name: AppRoutes.settingsPage, page: () => SettingsPage()),
+  //card
+  GetPage(name: AppRoutes.checkoutPage, page: () => CheckoutPage()),
+  GetPage(name: AppRoutes.completeAymentPage, page: () => CompleteAymentPage()),
+  GetPage(name: AppRoutes.successPay, page: () => SuccessPay()),
 ];

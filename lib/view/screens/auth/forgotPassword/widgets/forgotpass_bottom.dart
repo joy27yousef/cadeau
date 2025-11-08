@@ -26,7 +26,7 @@ class ForgotpassBottom extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Phone Number',
+                    '3'.tr,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Colors.grey.shade400,
                       fontSize: 14,
@@ -48,7 +48,7 @@ class ForgotpassBottom extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Email Address',
+                    '4'.tr,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: AppColor.mainColor,
                       fontSize: 14,

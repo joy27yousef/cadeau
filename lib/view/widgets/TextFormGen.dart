@@ -35,15 +35,15 @@ class TextFormGen extends StatelessWidget {
       controller: mycontroller,
       keyboardType: typekey,
       cursorColor: AppColor.mainColor,
-      minLines: isMessage ? 6 : 1,
-      maxLines: isMessage ? 10 : 1,
+      minLines: isMessage ? 4 : 1,
+      maxLines: isMessage ? 8 : 1,
       decoration: InputDecoration(
         filled: true,
         fillColor: fillcolor == null
             ? AppColor.background
             : Colors.grey.shade100,
 
-        hintText: lable, // الليبل نفسه يصير hint داخل الحقل
+        hintText: lable,
         hintStyle: TextStyle(
           color: Colors.grey.shade400,
           fontSize: 16,

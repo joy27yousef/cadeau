@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 Drawer buildDrawer(BuildContext context) {
-  
   return Drawer(
     backgroundColor: AppColor.background,
     child: ListView(
@@ -20,7 +19,7 @@ Drawer buildDrawer(BuildContext context) {
         const SizedBox(height: 50),
 
         ListtileDrawer(
-          text: 'Wishlist',
+          text: '100'.tr,
           icon: Iconsax.heart,
           ontap: () {
             Get.back();
@@ -31,7 +30,7 @@ Drawer buildDrawer(BuildContext context) {
         ),
 
         ListtileDrawer(
-          text: 'Track Order',
+          text: '102'.tr,
           icon: Iconsax.truck,
           ontap: () {
             Get.back();
@@ -43,7 +42,7 @@ Drawer buildDrawer(BuildContext context) {
         ),
 
         ListtileDrawer(
-          text: 'Cart',
+          text: '107'.tr,
           icon: Iconsax.shopping_bag,
           ontap: () {
             Get.back();
@@ -55,7 +54,7 @@ Drawer buildDrawer(BuildContext context) {
         ),
 
         ListtileDrawer(
-          text: 'Send Report',
+          text: '96'.tr,
           icon: Iconsax.message_circle,
           ontap: () {
             Get.back();
@@ -65,22 +64,24 @@ Drawer buildDrawer(BuildContext context) {
           },
         ),
 
+        ListtileDrawer(text: '103'.tr, icon: FontAwesomeIcons.circleQuestion),
         ListtileDrawer(
-          text: 'Terms & Condition',
-          icon: FontAwesomeIcons.circleQuestion,
+          text: '112'.tr,
+          icon: Iconsax.setting_2,
+          ontap: () {
+            Get.toNamed(AppRoutes.settingsPage);
+          },
         ),
-        ListtileDrawer(text: 'Language', icon: Iconsax.language_circle),
-        ListtileDrawer(text: 'Delete Account', icon: Iconsax.trash),
 
         ListTile(
           leading: Icon(Iconsax.logout, size: 20, color: AppColor.mainColor),
           title: Text(
-            'Logout',
+            '110'.tr,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: AppColor.mainColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                ),
+              color: AppColor.mainColor,
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+            ),
           ),
         ),
       ],

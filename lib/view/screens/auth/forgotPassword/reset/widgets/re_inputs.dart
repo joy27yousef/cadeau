@@ -21,10 +21,10 @@ class ReInputs extends StatelessWidget {
       children: [
         SizedBox(height: withSpace ? 35 : 20),
         Text(text, style: Theme.of(context).textTheme.titleSmall),
-        SizedBox(height: 10),
+        SizedBox(height: 5),
 
         TextFormGen(hint: '', lable: lable, typekey: keyboard),
-        SizedBox(height: withSpace ? 20 : 0),
+        SizedBox(height: withSpace ? 15 : 0),
       ],
     );
   }

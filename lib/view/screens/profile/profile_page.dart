@@ -1,3 +1,4 @@
+import 'package:cadeau/core/localization/change_local.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
 import 'package:cadeau/view/screens/main_page.dart';
 import 'package:cadeau/view/screens/profile/widgets/profile_list.dart';
@@ -19,21 +20,21 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             ProfileList(
-              title: 'Wishlist',
+              title: '100'.tr,
               icon: Iconsax.heart,
               ontap: () {
                 Get.toNamed(AppRoutes.wishlistPage);
               },
             ),
             ProfileList(
-              title: 'Edit Profile',
+              title: '101'.tr,
               icon: Iconsax.profile_circle,
               ontap: () {
                 Get.toNamed(AppRoutes.editProfilePage);
               },
             ),
             ProfileList(
-              title: 'Track Orders',
+              title: '102'.tr,
               icon: Iconsax.truck,
               ontap: () {
                 final navController = Get.find<NavigationController>();
@@ -41,19 +42,26 @@ class ProfilePage extends StatelessWidget {
               },
             ),
             ProfileList(
-              title: 'Edit Payment Form',
+              title: '82'.tr,
               icon: Iconsax.money,
               ontap: () {
                 Get.toNamed(AppRoutes.editPaymentPage);
               },
             ),
             ProfileList(
-              title: 'Terms & Conditions',
+              title: '112'.tr,
+              icon: Iconsax.setting_2,
+              ontap: () {
+                Get.toNamed(AppRoutes.settingsPage);
+              },
+            ),
+            ProfileList(
+              title: '103'.tr,
               icon: FontAwesomeIcons.circleQuestion,
               ontap: () {},
             ),
             ProfileList(
-              title: 'Reports & Help',
+              title: '95'.tr,
               icon: Iconsax.message_notif,
               ontap: () {
                 Get.toNamed(AppRoutes.reportsHelpPage);

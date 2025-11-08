@@ -1,5 +1,6 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -10,7 +11,7 @@ class ProductDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Details',
+          '70'.tr,
           style: Theme.of(context).textTheme.titleSmall!.copyWith(
             color: AppColor.secondBlack,
             fontSize: 16,

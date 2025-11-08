@@ -11,12 +11,12 @@ class SignupBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Boxtext(color: AppColor.mainColor, ontapfun: () {}, text: 'Sign Up'),
+        Boxtext(color: AppColor.mainColor, ontapfun: () {}, text: '26'.tr),
         SizedBox(height: 18),
         Row(
           children: [
             Text(
-              'Already have an account? ',
+              '27'.tr,
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: AppColor.darkGray,
                 fontWeight: FontWeight.w400,
@@ -26,7 +26,7 @@ class SignupBottom extends StatelessWidget {
               onTap: () => Get.offNamed(AppRoutes.login),
               borderRadius: BorderRadius.circular(20),
               child: Text(
-                'Click here to login',
+                '28'.tr,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   color: AppColor.mainColor,
                   fontWeight: FontWeight.w400,

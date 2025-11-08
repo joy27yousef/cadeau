@@ -1,6 +1,7 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class SearchInput extends StatelessWidget {
   const SearchInput({super.key});
@@ -17,12 +18,12 @@ class SearchInput extends StatelessWidget {
       child: Row(
         children: [
           const SizedBox(width: 15),
-          const Expanded(
+           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Find your gift',
+                hintText: '72'.tr,
                 hintStyle: TextStyle(
-                  color: Color(0xFF6B7280), // رمادي ناعم
+                  color: Color(0xFF6B7280), 
                   fontSize: 16,
                 ),
                 border: InputBorder.none,

@@ -10,25 +10,25 @@ class ReportsHelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarScreens(title: 'Reports & Help'),
+      appBar: AppbarScreens(title: '95'.tr),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Column(
           children: [
             ProfileList(
-              title: 'Send Report',
+              title: '96'.tr,
               icon: Icons.headset_mic_rounded,
               ontap: () {
                 Get.toNamed(AppRoutes.sendReportPage);
               },
             ),
             ProfileList(
-              title: 'Reports',
+              title: '97'.tr,
               icon: Icons.report_gmailerrorred_rounded,
               ontap: () {},
             ),
             ProfileList(
-              title: 'Help',
+              title: '90'.tr,
               icon: Icons.help_outline_sharp,
               ontap: () {
                 Get.toNamed(AppRoutes.helpPage);

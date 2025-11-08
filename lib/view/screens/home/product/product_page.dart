@@ -9,6 +9,7 @@ import 'package:cadeau/view/screens/home/widgets/home_product_view.dart';
 import 'package:cadeau/view/widgets/boxText.dart';
 import 'package:cadeau/view/widgets/leadingBack.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -39,11 +40,11 @@ class ProductPage extends StatelessWidget {
             Boxtext(
               color: AppColor.mainColor,
               ontapfun: () {},
-              text: 'Add To Cart',
+              text: '67'.tr,
             ),
             SizedBox(height: 30),
             HomeProductView(
-              title: 'Similar Products',
+              title: '68'.tr,
               productTitle: 'Class Queen',
               price: '\$12.50',
               image: AppImages.ads,

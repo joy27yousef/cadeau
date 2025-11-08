@@ -13,20 +13,16 @@ class ResetpassEmailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarScreens(title: 'Forgot Password'),
+      appBar: AppbarScreens(title: '1'.tr),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            WelcomePart(
-              text1: 'Reset With Email Address',
-              text2:
-                  'Please enter your email address to get a verifiication code..',
-            ),
+            WelcomePart(text1: '5'.tr, text2: '6'.tr),
             ReInputs(
-              text: 'Email Address',
-              lable: 'email@gmail.com',
+              text: '4'.tr,
+              lable: '7'.tr,
               keyboard: TextInputType.emailAddress,
             ),
             Boxtext(
@@ -34,7 +30,7 @@ class ResetpassEmailPage extends StatelessWidget {
               ontapfun: () {
                 Get.toNamed(AppRoutes.verificationPage);
               },
-              text: 'Next',
+              text: '8'.tr,
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/view/widgets/appbar_screens.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class CategoriesPage extends StatelessWidget {
   const CategoriesPage({super.key});
@@ -31,7 +32,7 @@ class CategoriesPage extends StatelessWidget {
                   Icon(Icons.palette, color: AppColor.greyLight, size: 30),
                   SizedBox(height: 5),
                   Text(
-                    'palette',
+                    '64'.tr,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: AppColor.greyLight,
                       fontSize: 16,

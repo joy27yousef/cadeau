@@ -82,6 +82,7 @@ flutter:
   assets:
     - assets/images/google.png
     - assets/images/logo.png
+    - assets/images/pay.png
     - assets/images/home/ads.png
     - assets/images/home/product.png
   
@@ -111,6 +112,12 @@ fonts:
       - asset: assets/fonts/tajwal/Tajawal-ExtraBold.ttf
         weight: 700
         style: normal
+  - family: arabic
+    fonts:
+      - asset: assets/fonts/nizar/nizar.ttf
+        # weight: 400
+        # style: normal
+     
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

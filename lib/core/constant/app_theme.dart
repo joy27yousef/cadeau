@@ -40,7 +40,7 @@ ThemeData arabicTheme = ThemeData(
     scrolledUnderElevation: 0,
 
     titleTextStyle: TextStyle(
-      fontFamily: AppFonts.tajwal,
+      fontFamily: AppFonts.arabic,
       color: AppColor.black,
       fontSize: 16,
       fontWeight: FontWeight.w400,
@@ -48,10 +48,16 @@ ThemeData arabicTheme = ThemeData(
   ),
   textTheme: TextTheme(
     titleLarge: TextStyle(
-      fontFamily: AppFonts.tajwal,
+      fontFamily: AppFonts.arabic,
       color: AppColor.black,
-      fontSize: 28,
+      fontSize: 20,
       fontWeight: FontWeight.w600,
+    ),
+    titleSmall: TextStyle(
+      fontFamily: AppFonts.arabic,
+      color: AppColor.greyLight,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
     ),
   ),
 );

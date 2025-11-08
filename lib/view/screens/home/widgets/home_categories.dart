@@ -1,6 +1,7 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/view/widgets/title_home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:iconsax/iconsax.dart';
 
 class HomeCategories extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeCategories extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleHome(text: 'Categories', viewAll: true, onTap: () {}),
+        TitleHome(text: '78'.tr, viewAll: true, onTap: () {}),
         SizedBox(height: 15),
         SizedBox(
           height: 100,

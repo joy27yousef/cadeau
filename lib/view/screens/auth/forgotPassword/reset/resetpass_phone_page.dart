@@ -13,20 +13,16 @@ class ResetpassPhonePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarScreens(title: 'Forgot Password'),
+      appBar: AppbarScreens(title: '1'.tr),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            WelcomePart(
-              text1: 'Reset With Phone Number',
-              text2:
-                  'Please enter your phone number to get a verifiication code..',
-            ),
+            WelcomePart(text1: '9'.tr, text2: '10'.tr),
             ReInputs(
-              text: 'Phone Number',
-              lable: '+966',
+              text: '3'.tr,
+              lable: '11'.tr,
               keyboard: TextInputType.phone,
             ),
             Boxtext(
@@ -34,7 +30,7 @@ class ResetpassPhonePage extends StatelessWidget {
               ontapfun: () {
                 Get.toNamed(AppRoutes.verificationPage);
               },
-              text: 'Next',
+              text: '8'.tr,
             ),
           ],
         ),

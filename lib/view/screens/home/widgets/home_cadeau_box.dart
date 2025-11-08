@@ -1,5 +1,6 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class HomeCadeauBox extends StatelessWidget {
   const HomeCadeauBox({super.key});
@@ -20,7 +21,7 @@ class HomeCadeauBox extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Cadeau Boutique',
+                '76'.tr,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
@@ -30,7 +31,7 @@ class HomeCadeauBox extends StatelessWidget {
               SizedBox(height: 10),
 
               Text(
-                'Send Your Best. For all occasions, ages, friends and family, Cadeau Boutique will always be with you. ',
+                '77'.tr,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w400,
                   fontSize: 12,

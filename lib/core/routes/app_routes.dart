@@ -20,4 +20,9 @@ class AppRoutes {
   static const String reportsHelpPage = "/ReportsHelpPage";
   static const String helpPage = "/HelpPage";
   static const String sendReportPage = "/SendReportPage";
+  static const String settingsPage = "/SettingsPage";
+  //card
+  static const String checkoutPage = "/CheckoutPage";
+  static const String completeAymentPage = "/CompleteAymentPage";
+  static const String successPay = "/SuccessPay";
 }

@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
             HomeScrollAds(),
             HomeCategories(),
             HomeProductView(
-              title: 'top Seller',
+              title: '73'.tr,
               productTitle: 'Class Queen',
               price: '\$12.50',
               image: AppImages.ads,
@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
             HomeOccasions(),
             HomeOnlyforu(),
             HomeProductView(
-              title: 'Latest',
+              title: '74'.tr,
               productTitle: 'Class Queen',
               price: '\$12.50',
               image: AppImages.ads,

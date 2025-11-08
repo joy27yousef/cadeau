@@ -13,18 +13,15 @@ class VerificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarScreens(title: 'Verification'),
+      appBar: AppbarScreens(title: '32'.tr),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            WelcomePart(
-              text1: 'Verification',
-              text2: 'Please enter verification code',
-            ),
+            WelcomePart(text1: '32'.tr, text2: '33'.tr),
             ReInputs(
-              text: 'Verification Code',
+              text: '34'.tr,
               lable: '4 4 4 9',
               keyboard: TextInputType.phone,
             ),
@@ -33,7 +30,7 @@ class VerificationPage extends StatelessWidget {
               ontapfun: () {
                 Get.toNamed(AppRoutes.resetpasswordPage);
               },
-              text: 'Verify Code',
+              text: '35'.tr,
             ),
           ],
         ),

@@ -13,7 +13,7 @@ class HomeOccasions extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TitleHome(
-          text: 'Special Occasions',
+          text: '79'.tr,
           viewAll: true,
           onTap: () {
             Get.toNamed(AppRoutes.allOcassionPage);
