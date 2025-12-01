@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Boxtext extends StatefulWidget {
+class BoxButtom extends StatefulWidget {
   final Color color;
   final void Function() ontapfun;
   final String text;
   final bool isLoading;
 
-  const Boxtext({
+  const BoxButtom({
     super.key,
     required this.color,
     required this.ontapfun,
@@ -15,10 +15,10 @@ class Boxtext extends StatefulWidget {
   });
 
   @override
-  State<Boxtext> createState() => _BoxtextState();
+  State<BoxButtom> createState() => _BoxtextState();
 }
 
-class _BoxtextState extends State<Boxtext> with SingleTickerProviderStateMixin {
+class _BoxtextState extends State<BoxButtom> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override

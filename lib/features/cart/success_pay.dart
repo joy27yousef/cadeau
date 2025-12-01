@@ -1,9 +1,9 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/constant/app_images.dart';
+import 'package:cadeau/core/widgets/box_buttom.dart';
 
 import 'package:cadeau/features/main_page.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
-import 'package:cadeau/core/widgets/boxText.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,7 +35,7 @@ class SuccessPay extends StatelessWidget {
               ],
             ),
             SizedBox(height: 200),
-            Boxtext(
+            BoxButtom(
               color: AppColor.mainColor,
               ontapfun: () {
                 final navController = Get.find<NavigationController>();

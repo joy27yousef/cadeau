@@ -2,9 +2,10 @@ import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/functions/message.dart';
 import 'package:cadeau/core/functions/valid_inputs.dart';
 import 'package:cadeau/core/widgets/TextFormGen.dart';
-import 'package:cadeau/core/widgets/boxText.dart';
-import 'package:cadeau/features/auth/signUp/logic/cubit/register_cubit.dart';
-import 'package:cadeau/features/auth/signUp/logic/cubit/register_state.dart';
+import 'package:cadeau/core/widgets/box_buttom.dart';
+import 'package:cadeau/features/auth/signUp/logic/bloc/register_bloc.dart';
+import 'package:cadeau/features/auth/signUp/logic/bloc/register_event.dart';
+import 'package:cadeau/features/auth/signUp/logic/bloc/register_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -14,18 +15,20 @@ class SignupInputs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocConsumer<RegisterBloc, RegisterState>(
       listener: (context, state) {
         if (state is RegisterSuccess) {
           showMessage(message: state.model.message, isSuccess: true);
-        } else if (state is RegisterFailure) {
+        } 
+        else if (state is RegisterFailure) {
           showMessage(message: state.error.message, isSuccess: false);
         }
       },
       builder: (context, state) {
-        final cubit = context.read<RegisterCubit>();
+        final bloc = context.read<RegisterBloc>();
+
         return Form(
-          key: cubit.formKey,
+          key: bloc.formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,7 +41,7 @@ class SignupInputs extends StatelessWidget {
                 hint: '',
                 lable: 'Enter full name'.tr,
                 typekey: TextInputType.name,
-                mycontroller: cubit.nameController,
+                mycontroller: bloc.nameController,
                 valid: (value) => ValidInputs.validateEmpty(value ?? ""),
               ),
               SizedBox(height: 15),
@@ -52,7 +55,7 @@ class SignupInputs extends StatelessWidget {
                 hint: '',
                 lable: 'email@gmail.com'.tr,
                 typekey: TextInputType.emailAddress,
-                mycontroller: cubit.emailController,
+                mycontroller: bloc.emailController,
                 valid: (value) =>
                     ValidInputs.validateEmail(value ?? "", email: value ?? ""),
               ),
@@ -67,7 +70,7 @@ class SignupInputs extends StatelessWidget {
                 hint: '',
                 lable: '+963'.tr,
                 typekey: TextInputType.phone,
-                mycontroller: cubit.phoneController,
+                mycontroller: bloc.phoneController,
                 valid: (value) => ValidInputs.validatePhoneNumber(value),
               ),
               SizedBox(height: 15),
@@ -81,7 +84,7 @@ class SignupInputs extends StatelessWidget {
                 hint: '',
                 lable: '*******',
                 typekey: TextInputType.text,
-                mycontroller: cubit.passController,
+                mycontroller: bloc.passController,
                 valid: (value) =>
                     ValidInputs.validatePassword(password: value ?? ""),
               ),
@@ -96,19 +99,19 @@ class SignupInputs extends StatelessWidget {
                 hint: '',
                 lable: '*******',
                 typekey: TextInputType.text,
-                mycontroller: cubit.confirmController,
+                mycontroller: bloc.confirmController,
                 valid: (value) => ValidInputs.matchPassword(
-                  value1: cubit.passController.text,
+                  value1: bloc.passController.text,
                   value2: value ?? "",
                   password: value ?? "",
                 ),
               ),
               SizedBox(height: 20),
 
-              Boxtext(
+              BoxButtom(
                 color: AppColor.mainColor,
                 ontapfun: () {
-                  cubit.register();
+                  bloc.add(SubmitRegisterEvent());
                 },
                 text: state is RegisterLoading ? 'Loading...' : 'Sign Up'.tr,
               ),

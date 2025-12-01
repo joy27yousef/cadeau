@@ -4,12 +4,13 @@ import 'package:get/get.dart';
 void showMessage({
   required String message,
   bool isSuccess = true,
-  Duration duration = const Duration(seconds: 3),
+  Duration duration = const Duration(seconds: 2),
 }) {
   Get.snackbar(
     isSuccess ? 'Success' : 'Error',
     message,
     snackPosition: SnackPosition.TOP,
+    // ignore: deprecated_member_use
     backgroundColor: Colors.grey.withOpacity(0.85),
     colorText: Colors.white,
     margin: const EdgeInsets.all(8),
@@ -20,6 +21,6 @@ void showMessage({
       color: isSuccess ? Colors.green : Colors.red,
     ),
     shouldIconPulse: true,
-    overlayBlur: 1,
+    overlayBlur: 0.5,
   );
 }

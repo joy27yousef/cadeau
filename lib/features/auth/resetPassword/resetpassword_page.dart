@@ -1,8 +1,8 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
+import 'package:cadeau/core/widgets/box_buttom.dart';
 import 'package:cadeau/features/auth/forgotPassword/reset/widgets/re_inputs.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
-import 'package:cadeau/core/widgets/boxText.dart';
 import 'package:cadeau/core/widgets/welcome_part.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +33,7 @@ class ResetpasswordPage extends StatelessWidget {
               lable: '********',
               keyboard: TextInputType.text,
             ),
-            Boxtext(
+            BoxButtom(
               color: AppColor.mainColor,
               ontapfun: () {
                 Get.toNamed(AppRoutes.login);

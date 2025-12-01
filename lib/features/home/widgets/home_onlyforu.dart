@@ -1,6 +1,6 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/constant/app_images.dart';
-import 'package:cadeau/core/widgets/boxText.dart';
+import 'package:cadeau/core/widgets/box_buttom.dart';
 import 'package:cadeau/core/widgets/title_home.dart';
 
 import 'package:flutter/material.dart';
@@ -78,7 +78,7 @@ class HomeOnlyforu extends StatelessWidget {
                     SizedBox(
                       height: 30,
                       width: 120,
-                      child: Boxtext(
+                      child: BoxButtom(
                         color: AppColor.mainColor,
                         ontapfun: () {},
                         text: 'View Details'.tr,

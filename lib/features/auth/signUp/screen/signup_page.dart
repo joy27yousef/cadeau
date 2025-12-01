@@ -1,6 +1,6 @@
 import 'package:cadeau/core/widgets/welcome_part.dart';
 import 'package:cadeau/features/auth/signUp/data/repository/register_repo.dart';
-import 'package:cadeau/features/auth/signUp/logic/cubit/register_cubit.dart';
+import 'package:cadeau/features/auth/signUp/logic/bloc/register_bloc.dart';
 import 'package:cadeau/features/auth/signUp/screen/widgets/signup_inputs.dart';
 import 'package:cadeau/features/auth/signUp/screen/widgets/signup_bottom.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +14,10 @@ class SignupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<RegisterCubit>(
+    return BlocProvider<RegisterBloc>(
       create: (_) {
         final repo = RegisterRepo(api: DioConsumer(dio: Dio()));
-        return RegisterCubit(repo);
+        return RegisterBloc(repo);
       },
       child: Scaffold(
         body: Padding(

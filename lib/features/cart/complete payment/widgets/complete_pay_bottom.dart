@@ -1,7 +1,7 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
+import 'package:cadeau/core/widgets/box_buttom.dart';
 import 'package:cadeau/features/cart/widgets/cart_summary.dart';
-import 'package:cadeau/core/widgets/boxText.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +14,7 @@ class CompletePayBottom extends StatelessWidget {
     return Column(
       children: [
         CartSummary(),
-        Boxtext(
+        BoxButtom(
           color: AppColor.mainColor,
           ontapfun: () {
             Get.toNamed(AppRoutes.successPay);

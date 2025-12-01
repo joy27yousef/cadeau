@@ -1,10 +1,10 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
+import 'package:cadeau/core/widgets/box_buttom.dart';
 import 'package:cadeau/features/cart/widgets/cart_addsong.dart';
 import 'package:cadeau/features/cart/widgets/cart_product.dart';
 import 'package:cadeau/features/cart/widgets/cart_summary.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
-import 'package:cadeau/core/widgets/boxText.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,7 @@ class CartPage extends StatelessWidget {
             CartProduct(),
             CartAddsong(),
             CartSummary(),
-            Boxtext(
+            BoxButtom(
               color: AppColor.mainColor,
               ontapfun: () {
                 Get.toNamed(AppRoutes.checkoutPage);

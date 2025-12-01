@@ -1,7 +1,7 @@
 import 'package:cadeau/core/constant/app_color.dart';
+import 'package:cadeau/core/widgets/box_buttom.dart';
 import 'package:cadeau/features/auth/forgotPassword/reset/widgets/re_inputs.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
-import 'package:cadeau/core/widgets/boxText.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
@@ -59,7 +59,7 @@ class EditPaymentPage extends StatelessWidget {
               keyboard: TextInputType.text,
             ),
             SizedBox(height: 30),
-            Boxtext(
+            BoxButtom(
               color: AppColor.mainColor,
               ontapfun: () {},
               text: 'Save Changes'.tr,

@@ -1,8 +1,12 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/constant/app_images.dart';
+import 'package:cadeau/core/functions/message.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
-import 'package:cadeau/core/widgets/boxText.dart';
+import 'package:cadeau/core/widgets/box_buttom.dart';
+import 'package:cadeau/features/auth/login/logic/cubit/login_cubit.dart';
+import 'package:cadeau/features/auth/login/logic/cubit/login_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
@@ -32,13 +36,30 @@ class LoginBottom extends StatelessWidget {
           ],
         ),
         SizedBox(height: 30),
-        Boxtext(
-          color: AppColor.mainColor,
-          ontapfun: () {
-            Get.offAllNamed(AppRoutes.mainPage);
+        BlocConsumer<LoginCubit, LoginState>(
+          listener: (context, state) {
+            if (state is LoginSuccess) {
+              showMessage(message: state.model.message, isSuccess: true);
+              Get.offAllNamed(AppRoutes.mainPage);
+            } else if (state is LoginFailure) {
+              showMessage(message: state.error.message, isSuccess: false);
+            }
           },
-          text: 'Log in'.tr,
+          builder: (context, state) {
+            final cubit = context.read<LoginCubit>();
+
+            bool isLoading = state is LoginLoading;
+            return BoxButtom(
+              color: AppColor.mainColor,
+              text: 'Log in',
+              isLoading: isLoading,
+              ontapfun: () {
+                cubit.login();
+              },
+            );
+          },
         ),
+
         SizedBox(height: 18),
         Row(
           children: [

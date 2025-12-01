@@ -23,6 +23,7 @@ class ApiKey {
   static String email = 'email';
   static String password = 'password';
   static String passwordConfirmation = 'password_confirmation';
+  static String accessToken = 'accessToken';
 }
 
 class GeneralKey {
