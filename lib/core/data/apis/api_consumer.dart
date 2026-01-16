@@ -20,6 +20,6 @@ abstract class ApiConsumer {
     String path, {
     Object? data,
     Map<String, dynamic>? queryParameters,
-    bool isFromData = false,
+    bool isFromData = false, required bool withToken,
   });
 }

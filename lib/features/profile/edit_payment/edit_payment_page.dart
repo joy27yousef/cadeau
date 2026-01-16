@@ -1,7 +1,7 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/widgets/box_buttom.dart';
-import 'package:cadeau/features/auth/forgotPassword/reset/widgets/re_inputs.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
+import 'package:cadeau/core/widgets/title_input.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
@@ -16,43 +16,43 @@ class EditPaymentPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: ListView(
           children: [
-            ReInputs(
+            TitleInput(
               text: 'Email Address'.tr,
               lable: 'email@gmail.com'.tr,
               keyboard: TextInputType.emailAddress,
               withSpace: false,
             ),
-            ReInputs(
+            TitleInput(
               text: 'Street'.tr,
               lable: '',
               keyboard: TextInputType.text,
               withSpace: false,
             ),
-            ReInputs(
+            TitleInput(
               text: 'Phone Number'.tr,
               lable: '+966',
               keyboard: TextInputType.phone,
               withSpace: false,
             ),
-            ReInputs(
+            TitleInput(
               text: 'State'.tr,
               lable: '',
               keyboard: TextInputType.text,
               withSpace: false,
             ),
-            ReInputs(
+            TitleInput(
               text: 'Postal Code'.tr,
               withSpace: false,
               lable: '',
               keyboard: TextInputType.text,
             ),
-            ReInputs(
+            TitleInput(
               text: 'Name'.tr,
               withSpace: false,
               lable: '86'.tr,
               keyboard: TextInputType.text,
             ),
-            ReInputs(
+            TitleInput(
               text: 'Surname'.tr,
               withSpace: false,
               lable: 'John'.tr,

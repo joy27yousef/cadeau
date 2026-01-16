@@ -1,25 +1,56 @@
 import 'package:cadeau/core/constant/app_theme.dart';
+import 'package:cadeau/core/data/apis/dio_consumer.dart';
 import 'package:cadeau/core/localization/change_local.dart';
 import 'package:cadeau/core/localization/translation.dart';
 import 'package:cadeau/core/routes/routes.dart';
 import 'package:cadeau/core/services/services.dart';
+import 'package:cadeau/features/brands/data/repository/brands_repo.dart';
+import 'package:cadeau/features/brands/logic/bloc/brands_bloc.dart';
+import 'package:cadeau/features/brands/logic/bloc/brands_event.dart';
+import 'package:cadeau/features/categories/data/repository/categories_repo.dart';
+import 'package:cadeau/features/categories/logic/bloc/categories_bloc.dart';
+import 'package:cadeau/features/occasions/data/repository/occasion_repo.dart';
+import 'package:cadeau/features/occasions/logic/bloc/occasions_bloc.dart';
+import 'package:cadeau/features/occasions/logic/bloc/occasions_event.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init();
+
   await initialServices();
+
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       systemNavigationBarColor: Color(0xffFBFEFF),
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
-  // Initialbinding().dependencies();
-
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => CategoriesBloc(
+            repo: CategoriesRepo(api: DioConsumer(dio: Dio())),
+          )..add(LoadCategories()),
+        ),
+        BlocProvider(
+          create: (_) => BrandsBloc(
+            repo: BrandsRepo(api: DioConsumer(dio: Dio())),
+          )..add(LoadBrands()),
+        ),
+        BlocProvider(
+          create: (_) => OccasionsBloc(
+            repo: OccasionRepo(api: DioConsumer(dio: Dio())),
+          )..add(LoadOccasions()),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

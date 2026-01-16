@@ -1,6 +1,6 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/widgets/box_buttom.dart';
-import 'package:cadeau/features/auth/forgotPassword/reset/widgets/re_inputs.dart';
+import 'package:cadeau/core/widgets/title_input.dart';
 import 'package:cadeau/features/profile/reports%20&%20help/widgets/send_report_type.dart';
 import 'package:cadeau/core/widgets/TextFormGen.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
@@ -19,7 +19,7 @@ class SendReportPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ReInputs(
+            TitleInput(
               text: 'Email Address'.tr,
               lable: 'email@gmail.com'.tr,
               keyboard: TextInputType.emailAddress,

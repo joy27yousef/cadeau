@@ -7,6 +7,7 @@ class AppRoutes {
   static const String resetpassEmailPage = "/ResetpassEmailPage";
   static const String verificationPage = "/VerificationPage";
   static const String resetpasswordPage = "/ResetpasswordPage";
+  static const String verificationOtpPage = "/VerificationOtpPage";
   //home
   static const String mainPage = "/MainPage";
   static const String allOcassionPage = "/AllOcassionPage";
@@ -14,6 +15,10 @@ class AppRoutes {
   static const String saerchPage = "/SaerchPage";
   static const String productPage = "/ProductPage";
   static const String wishlistPage = "/WishlistPage";
+  static const String allCategoriesPage = "/AllCategoriesPage";
+  static const String mainCategoryPage = "/MainCategoryPage";
+  static const String mainOccasionPage = "/MainOccasionPage";
+  static const String mainBrandPage = "/MainBrandPage";
   //profile
   static const String editPaymentPage = "/EditPaymentPage";
   static const String editProfilePage = "/EditProfilePage";

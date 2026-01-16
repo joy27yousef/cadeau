@@ -18,7 +18,8 @@ class BoxButtom extends StatefulWidget {
   State<BoxButtom> createState() => _BoxtextState();
 }
 
-class _BoxtextState extends State<BoxButtom> with SingleTickerProviderStateMixin {
+class _BoxtextState extends State<BoxButtom>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override

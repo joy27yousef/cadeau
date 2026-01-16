@@ -1,3 +1,4 @@
+import 'package:cadeau/core/cache/cacheHelper.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -13,5 +14,5 @@ class MyServices extends GetxService {
 
 initialServices() async {
   await Get.putAsync(() => MyServices().init());
-  // await CacheHelper().init();
+  await CacheHelper().init();
 }

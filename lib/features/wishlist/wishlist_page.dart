@@ -3,7 +3,6 @@ import 'package:cadeau/core/constant/app_images.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
 import 'package:cadeau/core/widgets/love.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class WishlistPage extends StatelessWidget {
   const WishlistPage({super.key});
@@ -11,7 +10,7 @@ class WishlistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarScreens(title: 'Wishlist'.tr),
+      appBar: AppbarMainScreens(),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: ListView.builder(

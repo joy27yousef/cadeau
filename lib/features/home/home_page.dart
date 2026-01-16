@@ -1,10 +1,10 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/constant/app_images.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
-import 'package:cadeau/features/home/widgets/home_brands.dart';
+import 'package:cadeau/features/categories/screens/home_categories.dart';
+import 'package:cadeau/features/brands/screen/home_brands.dart';
 import 'package:cadeau/features/home/widgets/home_cadeau_box.dart';
-import 'package:cadeau/features/home/widgets/home_categories.dart';
-import 'package:cadeau/features/home/widgets/home_occasions.dart';
+import 'package:cadeau/features/occasions/screens/home_occasions.dart';
 import 'package:cadeau/features/home/widgets/home_onlyforu.dart';
 import 'package:cadeau/features/home/widgets/home_product_view.dart';
 import 'package:cadeau/features/home/widgets/home_scroll_ads.dart';
@@ -62,6 +62,7 @@ class HomePage extends StatelessWidget {
             price: '\$12.50',
             image: AppImages.ads,
           ),
+          
           HomeOccasions(),
           HomeOnlyforu(),
           HomeProductView(

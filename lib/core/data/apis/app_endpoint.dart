@@ -1,10 +1,21 @@
 class AppEndpoint {
-  static const String server =
-      'https://cadeau-boutique-production.up.railway.app/api/';
+  static const String server = 'https://cdb-back.bw-businessworld.net/api/';
 
-  //auth
+  //!auth
   static const String login = '/login';
+  static const String logout = '/logout';
   static const String rigister = '/register';
+  static const String verifyAccount = '/email-verification';
+  static const String sendResetCode = '/send-reset-code';
+  static const String resetPassword = '/reset-password';
+  //! categories
+  static const String categories = '/categories';
+  //! brands
+  static const String brands = '/brands';
+  //!occasions
+  static const String occasions = '/occasions';
+  //! product
+  static const String products = '/products';
 }
 
 class ApiKey {
@@ -13,6 +24,10 @@ class ApiKey {
   static String code = 'code';
   static String data = 'data';
   static String user = 'user';
+  static String userAbility = 'userAbility';
+  static String dateOfVerify = 'dateOfVerify';
+  static String otp = 'otp';
+
   static String userId = 'userId';
   static String userName = 'userName';
   static String userGender = 'userGender';
@@ -24,8 +39,63 @@ class ApiKey {
   static String password = 'password';
   static String passwordConfirmation = 'password_confirmation';
   static String accessToken = 'accessToken';
+  //! category
+  static String categoryId = 'categoryId';
+  static String categoryNameEnglish = 'categoryNameEnglish';
+  static String categoryNameArabic = 'categoryNameArabic';
+  static String categoryDescriptionEnglish = 'categoryDescriptionEnglish';
+  static String categoryDescriptionArabic = 'categoryDescriptionArabic';
+  static String categoryImage = 'categoryImage';
+  static String subcategories = 'subcategories';
+  static String products = 'products';
+  static String category = 'category';
+  static String productFeatures = 'productFeatures';
+  static String productId = 'productId';
+  static String productNameEnglish = 'productNameEnglish';
+  static String productNameArabic = 'productNameArabic';
+  static String productDescriptionEnglish = 'productDescriptionEnglish';
+  static String productDescriptionArabic = 'productDescriptionArabic';
+  static String productPrice = 'productPrice';
+  //! brands
+  static String brandId = 'brandId';
+  static String brandNameEnglish = 'brandNameEnglish';
+  static String brandNameArabic = 'brandNameArabic';
+  static String brandDescriptionEnglish = 'brandDescriptionEnglish';
+  static String brandDescriptionArabic = 'brandDescriptionArabic';
+  static String brandLogo = 'brandLogo';
+  static String brand = 'brand';
+  //! occasion
+  static String occasionId = 'occasionId';
+  static String occasion = 'occasion';
+  static String occasionNameEnglish = 'occasionNameEnglish';
+  static String occasionNameArabic = 'occasionNameArabic';
+  static String occasionDescriptionEnglish = 'occasionDescriptionEnglish';
+  static String occasionDescriptionArabic = 'occasionDescriptionArabic';
+  static String occasionImage = 'occasionImage';
+  //! product
+  static const String price = 'price';
+  
+  static const String productFeaturesEnglish = 'productFeaturesEnglish';
+  static const String productFeaturesArabic = 'productFeaturesArabic';
+  static const String productImage = 'productImage';
+  //! Features
+  static const String featuresEnglish = 'featuresEnglish';
+  static const String featuresArabic = 'featuresArabic';
+
+  //! Images & Variants
+  static const String images = 'images';
+  static const String variants = 'variants';
+
+  //! Variant
+  static const String variantId = 'variantId';
+  static const String variantSku = 'variantSku';
+  static const String variantPrice = 'variantPrice';
+  static const String stockQuantity = 'stockQuantity';
+  static const String inStock = 'inStock';
+  static const String attributes = 'attributes';
 }
 
 class GeneralKey {
   static String token = 'token';
+  static String userId = 'userId';
 }

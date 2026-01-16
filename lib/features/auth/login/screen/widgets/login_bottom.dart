@@ -3,8 +3,10 @@ import 'package:cadeau/core/constant/app_images.dart';
 import 'package:cadeau/core/functions/message.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
 import 'package:cadeau/core/widgets/box_buttom.dart';
-import 'package:cadeau/features/auth/login/logic/cubit/login_cubit.dart';
-import 'package:cadeau/features/auth/login/logic/cubit/login_state.dart';
+import 'package:cadeau/features/auth/login/logic/bloc/login_bloc.dart';
+import 'package:cadeau/features/auth/login/logic/bloc/login_event.dart';
+import 'package:cadeau/features/auth/login/logic/bloc/login_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,7 +24,7 @@ class LoginBottom extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             InkWell(
-              onTap: () => Get.offNamed(AppRoutes.forgotpassword),
+              onTap: () => Get.toNamed(AppRoutes.forgotpassword),
               borderRadius: BorderRadius.circular(20),
               child: Text(
                 'Forgot Password ?'.tr,
@@ -36,17 +38,25 @@ class LoginBottom extends StatelessWidget {
           ],
         ),
         SizedBox(height: 30),
-        BlocConsumer<LoginCubit, LoginState>(
+        BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) {
             if (state is LoginSuccess) {
-              showMessage(message: state.model.message, isSuccess: true);
+              showMessage(
+                context,
+                message: state.model.message,
+                isSuccess: true,
+              );
               Get.offAllNamed(AppRoutes.mainPage);
             } else if (state is LoginFailure) {
-              showMessage(message: state.error.message, isSuccess: false);
+              showMessage(
+                context,
+                message: state.error.message,
+                isSuccess: false,
+              );
             }
           },
           builder: (context, state) {
-            final cubit = context.read<LoginCubit>();
+            final bloc = context.read<LoginBloc>();
 
             bool isLoading = state is LoginLoading;
             return BoxButtom(
@@ -54,7 +64,7 @@ class LoginBottom extends StatelessWidget {
               text: 'Log in',
               isLoading: isLoading,
               ontapfun: () {
-                cubit.login();
+                bloc.add(SubmitLoginEvent());
               },
             );
           },

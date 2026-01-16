@@ -1,3 +1,5 @@
+import 'package:cadeau/core/cache/cacheHelper.dart';
+import 'package:cadeau/core/data/apis/app_endpoint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'register_event.dart';
@@ -50,6 +52,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         if (!emit.isDone) emit(RegisterInitial());
       },
       (model) async {
+        await CacheHelper().removeData(key: GeneralKey.userId);
+
+        await CacheHelper().saveData(
+          key: GeneralKey.userId,
+          value: model.data!.user!.userId,
+        );
+
         emit(RegisterSuccess(model));
         await Future.delayed(const Duration(seconds: 1));
         if (!emit.isDone) emit(RegisterInitial());

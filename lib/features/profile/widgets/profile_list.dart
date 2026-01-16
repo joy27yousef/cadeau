@@ -22,6 +22,7 @@ class ProfileList extends StatelessWidget {
     final localCtrl = Get.find<LocaleController>();
     return ListTile(
       onTap: ontap,
+
       leading: Icon(icon, color: AppColor.mainColor),
       title: Text(
         title,

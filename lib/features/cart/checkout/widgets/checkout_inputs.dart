@@ -1,6 +1,5 @@
 import 'package:cadeau/core/constant/app_color.dart';
 
-import 'package:cadeau/features/auth/forgotPassword/reset/widgets/re_inputs.dart';
 import 'package:cadeau/core/widgets/TextFormGen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -21,18 +20,18 @@ class CheckoutInputs extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-        ReInputs(
-          text: 'Name'.tr,
-          lable: 'Enter Full Name'.tr,
-          keyboard: TextInputType.text,
-          withSpace: false,
-        ),
-        ReInputs(
-          text: 'Phone Number'.tr,
-          lable: '+966 256 485 1456',
-          keyboard: TextInputType.phone,
-          withSpace: false,
-        ),
+        // ReInputs(
+        //   text: 'Name'.tr,
+        //   lable: 'Enter Full Name'.tr,
+        //   keyboard: TextInputType.text,
+        //   withSpace: false,
+        // ),
+        // ReInputs(
+        //   text: 'Phone Number'.tr,
+        //   lable: '+966 256 485 1456',
+        //   keyboard: TextInputType.phone,
+        //   withSpace: false,
+        // ),
         SizedBox(height: 15),
 
         Text('Date'.tr, style: Theme.of(context).textTheme.titleSmall),
@@ -63,12 +62,12 @@ class CheckoutInputs extends StatelessWidget {
             ),
           ],
         ),
-        ReInputs(
-          text: 'Location'.tr,
-          lable: 'Enter Location..'.tr,
-          keyboard: TextInputType.text,
-          withSpace: false,
-        ),
+        // ReInputs(
+        //   text: 'Location'.tr,
+        //   lable: 'Enter Location..'.tr,
+        //   keyboard: TextInputType.text,
+        //   withSpace: false,
+        // ),
         SizedBox(height: 15),
 
         Text('Message'.tr, style: Theme.of(context).textTheme.titleSmall),

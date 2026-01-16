@@ -1,10 +1,8 @@
-import 'package:cadeau/core/constant/app_color.dart';
+
 import 'package:cadeau/core/constant/app_images.dart';
-import 'package:cadeau/core/routes/app_routes.dart';
 import 'package:cadeau/core/widgets/leadingBack.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+
 
 class AppbarScreens extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -41,16 +39,16 @@ class AppbarMainScreens extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Image.asset(AppImages.logo, width: 50),
       ),
-      actions: [
-        InkWell(
-          onTap: () => Get.toNamed(AppRoutes.wishlistPage),
-          borderRadius: BorderRadius.circular(10),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Icon(Iconsax.heart, color: AppColor.secondBlack),
-          ),
-        ),
-      ],
+      // actions: [
+      //   InkWell(
+      //     onTap: () => Get.toNamed(AppRoutes.wishlistPage),
+      //     borderRadius: BorderRadius.circular(10),
+      //     child: Padding(
+      //       padding: const EdgeInsets.symmetric(horizontal: 20),
+      //       child: Icon(Iconsax.heart, color: AppColor.secondBlack),
+      //     ),
+      //   ),
+      // ],
     );
   }
 

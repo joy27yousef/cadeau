@@ -5,11 +5,13 @@ class WelcomePart extends StatelessWidget {
   final String text1;
   final String text2;
   final bool withImage;
+  final bool withspace;
   const WelcomePart({
     super.key,
     this.withImage = false,
     required this.text1,
     required this.text2,
+    this.withspace = true,
   });
 
   @override
@@ -42,7 +44,7 @@ class WelcomePart extends StatelessWidget {
             fontWeight: FontWeight.w300,
           ),
         ),
-        SizedBox(height: 20),
+        (withspace) ? SizedBox(height: 20) : SizedBox(height: 0),
       ],
     );
   }

@@ -1,8 +1,9 @@
 import 'package:cadeau/core/widgets/welcome_part.dart';
 import 'package:cadeau/features/auth/signUp/data/repository/register_repo.dart';
 import 'package:cadeau/features/auth/signUp/logic/bloc/register_bloc.dart';
-import 'package:cadeau/features/auth/signUp/screen/widgets/signup_inputs.dart';
 import 'package:cadeau/features/auth/signUp/screen/widgets/signup_bottom.dart';
+import 'package:cadeau/features/auth/signUp/screen/widgets/signup_inputs.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';

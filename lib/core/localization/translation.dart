@@ -24,7 +24,7 @@ class MyTranslation extends Translations {
       // 10
       'Please enter your phone number to get a verification code..':
           'Please enter your phone number to get a verification code..',
-     
+
       // 12
       'Welcome Back,': 'Welcome Back,',
       // 13
@@ -235,6 +235,13 @@ class MyTranslation extends Translations {
       'Change Password': 'Change Password',
       // 114
       'Select Language': 'Select Language',
+      'All Categories': 'All Categories',
+      'All Brands': 'All Brands',
+      'Occasions': 'Occasions',
+      'All Ocassion': 'All Ocassion',
+      'Send Code': 'Send Code',
+      'There are currently no products': 'There are currently no products',
+
       // 'The field is required': 'The field is required',
       // 'The minimum is 8 characters': 'The minimum is 8 characters',
       // 'Invalid e-mail address': 'Invalid e-mail address',
@@ -475,6 +482,12 @@ class MyTranslation extends Translations {
       'Change Password': 'تغيير كلمة المرور',
       // 114
       'Select Language': 'تحديد اللغة',
+      'All Categories': 'كل الفئات',
+      'All Brands': 'كل البراندات',
+      'Occasions': 'المناسبات',
+      'All Ocassion': ' كل المناسبات',
+      'Send Code': 'إرسال الرمز',
+      'There are currently no products': 'لا يوجد منتجات حالياً',
     },
   };
 }
