@@ -1,4 +1,4 @@
-import 'package:cadeau/features/cart/complete%20payment/widgets/complete_pay_bottom.dart';
+import 'package:cadeau/features/cart/screens/complete%20payment/widgets/complete_pay_bottom.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 

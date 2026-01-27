@@ -67,10 +67,11 @@ class HomeOccasions extends StatelessWidget {
                             width: 70,
                             decoration: BoxDecoration(
                               color: Colors.grey.shade100,
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(35),
                             ),
                             child: Center(
                               child: Image.network(
+                                width: 45,
                                 occasion.occasionImage,
                                 fit: BoxFit.cover,
                               ),
@@ -100,54 +101,77 @@ class HomeOccasions extends StatelessWidget {
           ),
         ),
         SizedBox(height: 20),
-        TitleHome(
-          text: 'Special Occasions'.tr,
-          viewAll: true,
-          onTap: () {
-            Get.toNamed(AppRoutes.allOcassionPage);
+        TitleHome(text: 'Special Occasions'.tr, viewAll: false),
+        SizedBox(height: 15),
+        BlocBuilder<OccasionsBloc, OccasionsState>(
+          builder: (context, state) {
+            final bloc = context.read<OccasionsBloc>();
+            final cachedsp = bloc.cachedSpecialOccasions;
+
+            if (cachedsp == null) {
+              // Skeleton Loading
+              return SizedBox(
+                height: 180,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 20,
+                    ),
+                    child: Container(
+                      height: 160,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }
+
+            final occasions = cachedsp.data;
+
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: occasions.length,
+              itemBuilder: (context, i) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: InkWell(
+                  onTap: () {
+                    bloc.add(LoadOccasionsById(occasions[i].occasionId));
+                    Get.toNamed(
+                      AppRoutes.mainOccasionPage,
+                      arguments: {
+                        'occasionId': occasions[i].occasionId,
+                        'occasionNameArabic': occasions[i].occasionNameArabic,
+                        'occasionNameEnglish': occasions[i].occasionNameEnglish,
+                      },
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(15),
+                  child: Container(
+                    height: 160,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      image: DecorationImage(
+                        image: NetworkImage(occasions[i].image),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+              ),
+            );
           },
         ),
-        SizedBox(height: 15),
-        Container(
-          height: 160,
-          margin: const EdgeInsets.symmetric(horizontal: 20),
 
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(AppImages.ads),
-              fit: BoxFit.cover,
-            ),
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        SizedBox(height: 10),
-
-        Container(
-          height: 160,
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(AppImages.ads),
-              fit: BoxFit.cover,
-            ),
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        SizedBox(height: 10),
-
-        Container(
-          height: 160,
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(AppImages.ads),
-              fit: BoxFit.cover,
-            ),
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
         SizedBox(height: 20),
       ],
     );

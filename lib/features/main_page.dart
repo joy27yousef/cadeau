@@ -1,9 +1,9 @@
-import 'package:cadeau/features/cart/cart_page.dart';
+import 'package:cadeau/features/cart/screens/cart_page.dart';
 import 'package:cadeau/features/home/home_page.dart';
 import 'package:cadeau/features/profile/profile_page.dart';
 import 'package:cadeau/features/track/track_order_page.dart';
 import 'package:cadeau/core/widgets/main_drawer.dart';
-import 'package:cadeau/features/wishlist/wishlist_page.dart';
+import 'package:cadeau/features/wishlist/screens/wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -55,13 +55,13 @@ class MainPage extends StatelessWidget {
             items: [
               /// Home
               SalomonBottomBarItem(
-                icon: const Icon(Iconsax.home),
+                icon: const Icon(Iconsax.home), 
                 title: const Text("Home"),
                 selectedColor: AppColor.mainColor,
                 unselectedColor: AppColor.secondBlack,
               ),
 
-              /// Gifts
+              /// WishList
               SalomonBottomBarItem(
                 icon: const Icon(Iconsax.gift),
                 title: const Text("WishList"),

@@ -1,5 +1,5 @@
 import 'package:cadeau/core/constant/app_color.dart';
-import 'package:cadeau/features/cart/widgets/summart_price.dart';
+import 'package:cadeau/features/cart/screens/widgets/summart_price.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 

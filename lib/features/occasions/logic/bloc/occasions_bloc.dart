@@ -1,4 +1,5 @@
 import 'package:cadeau/features/occasions/data/models/occasions_model.dart';
+import 'package:cadeau/features/occasions/data/models/special_occasions_model.dart';
 import 'package:cadeau/features/occasions/data/repository/occasion_repo.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_event.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_state.dart';
@@ -8,10 +9,12 @@ class OccasionsBloc extends Bloc<OccasionsEvent, OccasionsState> {
   final OccasionRepo repo;
 
   OccasionsModel? cachedOccasions;
+  SpecialOccasionsModel? cachedSpecialOccasions;
 
   OccasionsBloc({required this.repo}) : super(OccasionsInitial()) {
     on<LoadOccasions>(loadOccasions);
     on<LoadOccasionsById>(loadOccasionsById);
+    on<LoadSpecialOccasions>(loadSpecialOccasions);
   }
 
   Future<void> loadOccasions(
@@ -19,13 +22,17 @@ class OccasionsBloc extends Bloc<OccasionsEvent, OccasionsState> {
     Emitter<OccasionsState> emit,
   ) async {
     emit(OccasionsLoading());
-    try {
-      final occasions = await repo.getOccasions();
-      cachedOccasions = occasions;
-      emit(OccasionsSuccess(occasions));
-    } catch (e) {
-      emit(OccasionsError(e.toString()));
-    }
+
+    final occasions = await repo.getOccasions();
+    occasions.fold(
+      (error) {
+        emit(OccasionsError(error.message));
+      },
+      (model) {
+        cachedOccasions = model;
+        emit(OccasionsSuccess(model));
+      },
+    );
   }
 
   Future<void> loadOccasionsById(
@@ -33,11 +40,33 @@ class OccasionsBloc extends Bloc<OccasionsEvent, OccasionsState> {
     Emitter<OccasionsState> emit,
   ) async {
     emit(OccasionsLoading());
-    try {
-      final occasion = await repo.getOccasionById(event.occasionsId);
-      emit(OccasionsByIdSuccess(occasion));
-    } catch (e) {
-      emit(OccasionsError(e.toString()));
-    }
+
+    final occasion = await repo.getOccasionById(event.occasionsId);
+    occasion.fold(
+      (error) {
+        emit(OccasionsError(error.message));
+      },
+      (model) {
+        emit(OccasionsByIdSuccess(model));
+      },
+    );
+  }
+
+  Future<void> loadSpecialOccasions(
+    LoadSpecialOccasions event,
+    Emitter<OccasionsState> emit,
+  ) async {
+    emit(OccasionsLoading());
+
+    final occasions = await repo.getSpecialOccasions();
+    occasions.fold(
+      (error) {
+        emit(OccasionsError(error.message));
+      },
+      (model) {
+        cachedSpecialOccasions = model;
+        emit(SpecialOccasionsByIdSuccess(model));
+      },
+    );
   }
 }

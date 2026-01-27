@@ -1,6 +1,9 @@
 import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/constant/app_images.dart';
+import 'package:cadeau/core/widgets/love.dart';
+import 'package:cadeau/features/wishlist/logic/bloc/wishlist_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductAllCard extends StatelessWidget {
   final List items;
@@ -71,33 +74,9 @@ class ProductAllCard extends StatelessWidget {
                           ),
                         ),
                       ),
+
                       //  Wishlist
-                      Positioned(
-                        top: 8,
-                        right: 8,
-                        child: GestureDetector(
-                          onTap: () => onWishlistTap?.call(item),
-                          child: Container(
-                            height: 35,
-                            width: 35,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 10,
-                                ),
-                              ],
-                            ),
-                            child: const Icon(
-                              Icons.favorite_border,
-                              color: Colors.red,
-                              size: 20,
-                            ),
-                          ),
-                        ),
-                      ),
+                      Love(id: item.productId),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -128,4 +107,10 @@ class ProductAllCard extends StatelessWidget {
       },
     );
   }
+}
+
+bool isProductInWishlist(BuildContext context, String productId) {
+  final bloc = context.watch<WishlistBloc>();
+  final items = bloc.cachedWishlist?.data?.wishlistItems ?? [];
+  return items.any((e) => e.id == productId);
 }

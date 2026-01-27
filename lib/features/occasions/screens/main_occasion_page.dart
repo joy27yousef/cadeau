@@ -1,11 +1,13 @@
-import 'package:cadeau/core/constant/app_color.dart';
-import 'package:cadeau/core/constant/app_images.dart';
 import 'package:cadeau/core/functions/data_translation.dart';
+import 'package:cadeau/core/routes/app_routes.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
+import 'package:cadeau/core/widgets/empty.dart';
 import 'package:cadeau/core/widgets/product_all_card.dart';
 import 'package:cadeau/features/categories/screens/widgets/product_all_card_shimmer.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_bloc.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_state.dart';
+import 'package:cadeau/features/product/logic/bloc/product_bloc.dart';
+import 'package:cadeau/features/product/logic/bloc/product_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -46,28 +48,18 @@ class MainOccasionPage extends StatelessWidget {
                     prod.productNameEnglish,
                   ),
                   getPrice: (prod) => prod.productPrice,
-                  onTap: (prod) {},
+                  onTap: (prod) {
+                    final productBloc = context.read<ProductBloc>();
+                    productBloc.add(LoadProductById(prod.productId));
+                    Get.toNamed(AppRoutes.productPage);
+                  },
                 );
               }
 
               //  Empty State
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(AppImages.empty, height: 180),
-                    const SizedBox(height: 10),
-                    Text(
-                      'There are currently no products'.tr,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        color: AppColor.darkGray,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
-                ),
+              return Empty(
+                text1: 'There are currently no products'.tr,
+                text2: '',
               );
             }
 

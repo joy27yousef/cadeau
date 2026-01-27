@@ -241,6 +241,10 @@ class MyTranslation extends Translations {
       'All Ocassion': 'All Ocassion',
       'Send Code': 'Send Code',
       'There are currently no products': 'There are currently no products',
+      'Your wishlist is empty': 'Your wishlist is empty',
+      'Add some products you love!': 'Add some products you love!',
+      'Features': 'Features',
+      'Description': 'Description',
 
       // 'The field is required': 'The field is required',
       // 'The minimum is 8 characters': 'The minimum is 8 characters',
@@ -488,6 +492,10 @@ class MyTranslation extends Translations {
       'All Ocassion': ' كل المناسبات',
       'Send Code': 'إرسال الرمز',
       'There are currently no products': 'لا يوجد منتجات حالياً',
+      'Your wishlist is empty': 'قائمة المفضلة فارغة',
+      'Add some products you love!': 'أضف المنتجات التي أحببتها',
+      'Features': 'المواصفات',
+      'Description': 'الشرح',
     },
   };
 }

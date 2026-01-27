@@ -14,8 +14,16 @@ class AppEndpoint {
   static const String brands = '/brands';
   //!occasions
   static const String occasions = '/occasions';
+  static const String specialOccasion = '/special-occasion';
   //! product
   static const String products = '/products';
+  static const String latestProducts = '/latest-products';
+  //!wishlist
+  static const String wishlistAdd = '/wishlist/add';
+  static const String wishlistRemove = '/wishlist/remove';
+  static const String wishlist = '/wishlist';
+  static const String addtoCart = '/cart/add';
+  //!
 }
 
 class ApiKey {
@@ -66,6 +74,7 @@ class ApiKey {
   static String brand = 'brand';
   //! occasion
   static String occasionId = 'occasionId';
+  static String image = 'image';
   static String occasion = 'occasion';
   static String occasionNameEnglish = 'occasionNameEnglish';
   static String occasionNameArabic = 'occasionNameArabic';
@@ -74,10 +83,21 @@ class ApiKey {
   static String occasionImage = 'occasionImage';
   //! product
   static const String price = 'price';
-  
+  static const String productRating = 'productRating';
+  static const String vendorLogo = 'vendorLogo';
+  static const String vendorShopNameArabic = 'vendorShopNameArabic';
+  static const String vendorShopNameEnglish = 'vendorShopNameEnglish';
+
   static const String productFeaturesEnglish = 'productFeaturesEnglish';
   static const String productFeaturesArabic = 'productFeaturesArabic';
   static const String productImage = 'productImage';
+  static const String rating = 'rating';
+  static const String ratingId = 'ratingId';
+  static const String review = 'review';
+  static const String ratings = 'ratings';
+  static const String stockQuantity = 'stockQuantity';
+  static const String inStock = 'inStock';
+
   //! Features
   static const String featuresEnglish = 'featuresEnglish';
   static const String featuresArabic = 'featuresArabic';
@@ -90,9 +110,22 @@ class ApiKey {
   static const String variantId = 'variantId';
   static const String variantSku = 'variantSku';
   static const String variantPrice = 'variantPrice';
-  static const String stockQuantity = 'stockQuantity';
-  static const String inStock = 'inStock';
   static const String attributes = 'attributes';
+
+  //!wishlist
+  static const String wishlist = 'wishlist';
+  static const String wishlistItems = 'wishlistItems';
+  static const String id = 'id';
+  static const String itemsCount = 'itemsCount';
+  static const String createdAt = 'createdAt';
+  static const String updatedAt = 'updatedAt';
+  static const String vendorId = 'vendorId';
+  static const String nameen = 'name_en';
+  static const String namear = 'name_ar';
+  static const String descriptionen = 'description_en';
+  static const String descriptionar = 'description_ar';
+  static const String featuresen = 'features_en';
+  static const String featuresar = 'features_ar';
 }
 
 class GeneralKey {

@@ -12,6 +12,12 @@ import 'package:cadeau/features/categories/logic/bloc/categories_bloc.dart';
 import 'package:cadeau/features/occasions/data/repository/occasion_repo.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_bloc.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_event.dart';
+import 'package:cadeau/features/product/data/repository/product_repo.dart';
+import 'package:cadeau/features/product/logic/bloc/product_bloc.dart';
+import 'package:cadeau/features/product/logic/bloc/product_event.dart';
+import 'package:cadeau/features/wishlist/data/repository/wishlist_repo.dart';
+import 'package:cadeau/features/wishlist/logic/bloc/wishlist_bloc.dart';
+import 'package:cadeau/features/wishlist/logic/bloc/wishlist_event.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,9 +49,25 @@ void main() async {
           )..add(LoadBrands()),
         ),
         BlocProvider(
-          create: (_) => OccasionsBloc(
-            repo: OccasionRepo(api: DioConsumer(dio: Dio())),
-          )..add(LoadOccasions()),
+          create: (_) =>
+              OccasionsBloc(
+                  repo: OccasionRepo(api: DioConsumer(dio: Dio())),
+                )
+                ..add(LoadOccasions())
+                ..add(LoadSpecialOccasions()),
+        ),
+        BlocProvider(
+          create: (_) => WishlistBloc(
+            repo: WishlistRepo(api: DioConsumer(dio: Dio())),
+          )..add(LoadWishlist()),
+        ),
+        BlocProvider(
+          create: (_) =>
+              ProductBloc(
+                  repo: ProductRepo(api: DioConsumer(dio: Dio())),
+                )
+                ..add(LoadAllProduct())
+                ..add(LoadLatestProduct()),
         ),
       ],
       child: MyApp(),

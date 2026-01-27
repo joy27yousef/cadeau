@@ -1,3 +1,4 @@
+import 'package:cadeau/core/data/apis/request_status%20.dart';
 import 'package:cadeau/core/functions/data_translation.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
@@ -20,17 +21,30 @@ class AllBrands extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
-            SizedBox(height: 20),
-            BlocBuilder<BrandsBloc, BrandsState>(
-              builder: (context, state) {
-                final bloc = context.read<BrandsBloc>();
-                final cached = bloc.cachedBrands;
+            const SizedBox(height: 20),
 
-                if (cached == null) {
+            BlocBuilder<BrandsBloc, BrandsState>(
+              buildWhen: (previous, current) =>
+                  previous.brandsStatus != current.brandsStatus ||
+                  previous.brands != current.brands,
+              builder: (context, state) {
+                //  Loading
+                if (state.brandsStatus == RequestStatus.loading) {
                   return const Center(child: CircularProgressIndicator());
                 }
 
-                final brands = cached.data;
+                //  Error
+                if (state.brandsStatus == RequestStatus.failure) {
+                  return Center(
+                    child: Text(
+                      state.error ?? 'Something went wrong',
+                      style: const TextStyle(color: Colors.red),
+                      textAlign: TextAlign.center,
+                    ),
+                  );
+                }
+
+                final brands = state.brands!.data;
 
                 return CategoriesAllpage(
                   items: brands,
@@ -40,7 +54,9 @@ class AllBrands extends StatelessWidget {
                     brand.brandNameEnglish,
                   ),
                   onTap: (brand) {
-                    bloc.add(LoadBrandById(brand.brandId));
+                    context.read<BrandsBloc>().add(
+                      LoadBrandById(brand.brandId),
+                    );
 
                     Get.toNamed(
                       AppRoutes.mainBrandPage,

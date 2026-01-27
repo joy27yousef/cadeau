@@ -47,7 +47,7 @@ class HomeCategories extends StatelessWidget {
                     child: InkWell(
                       onTap: () {
                         bloc.add(LoadCategoryById(category.categoryId));
-                        print(category.categoryNameArabic);
+
                         Get.toNamed(
                           AppRoutes.mainCategoryPage,
                           arguments: {
@@ -65,10 +65,11 @@ class HomeCategories extends StatelessWidget {
                             width: 70,
                             decoration: BoxDecoration(
                               color: Colors.grey.shade100,
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(35),
                             ),
                             child: Center(
                               child: Image.network(
+                                width: 45,
                                 category.categoryImage,
                                 fit: BoxFit.cover,
                               ),

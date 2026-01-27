@@ -7,7 +7,7 @@ class HomeSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100, // تثبيت الارتفاع لتحسين الأداء
+      height: 100,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 5,
@@ -16,14 +16,14 @@ class HomeSkeleton extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(left: 15),
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
+              baseColor: Colors.grey.shade200,
               highlightColor: Colors.grey.shade100,
               period: const Duration(milliseconds: 1200),
               child: Column(
                 children: [
                   Container(
                     height: 70,
-                    width: 70,
+                    width: 100,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(30),

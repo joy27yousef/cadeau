@@ -7,16 +7,16 @@ import 'package:cadeau/features/auth/login/screen/login_page.dart';
 import 'package:cadeau/features/auth/forgotPassword/screens/resetPassword/resetpassword_page.dart';
 import 'package:cadeau/features/auth/signUp/screen/signup_page.dart';
 import 'package:cadeau/features/auth/verificationAccount/screens/verification_account_page.dart';
+import 'package:cadeau/features/brands/screen/all_brands.dart';
 import 'package:cadeau/features/brands/screen/main_brand_page.dart';
-import 'package:cadeau/features/cart/checkout/checkout_page.dart';
-import 'package:cadeau/features/cart/complete%20payment/complete_ayment_page.dart';
-import 'package:cadeau/features/cart/success_pay.dart';
+import 'package:cadeau/features/cart/screens/checkout/checkout_page.dart';
+import 'package:cadeau/features/cart/screens/complete%20payment/complete_ayment_page.dart';
+import 'package:cadeau/features/cart/screens/success_pay.dart';
 import 'package:cadeau/features/categories/screens/main_category_page.dart';
-import 'package:cadeau/features/brands/screen/all_brands/all_brands.dart'
-    show AllBrands;
+
 import 'package:cadeau/features/categories/screens/all_categories/all_categories_page.dart';
 import 'package:cadeau/features/occasions/screens/all_ocassion/all_ocassion_page.dart';
-import 'package:cadeau/features/home/product/product_page.dart';
+import 'package:cadeau/features/product/screens/product_page.dart';
 import 'package:cadeau/features/home/search/saerch_page.dart';
 import 'package:cadeau/features/main_page.dart';
 import 'package:cadeau/features/occasions/screens/main_occasion_page.dart';
@@ -27,7 +27,7 @@ import 'package:cadeau/features/profile/reports%20&%20help/reports_help_page.dar
 import 'package:cadeau/features/profile/reports%20&%20help/send_report_page.dart'
     show SendReportPage;
 import 'package:cadeau/features/profile/settings/settings_page.dart';
-import 'package:cadeau/features/wishlist/wishlist_page.dart';
+import 'package:cadeau/features/wishlist/screens/wishlist_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [

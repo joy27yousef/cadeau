@@ -20,13 +20,18 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     Emitter<CategoriesState> emit,
   ) async {
     emit(CategoriesLoading());
-    try {
-      final categories = await repo.getCategories();
-      cachedCategories = categories;
-      emit(CategoriesSuccess(categories));
-    } catch (e) {
-      emit(CategoriesError(e.toString()));
-    }
+
+    final result = await repo.getCategories();
+
+    result.fold(
+      (error) {
+        emit(CategoriesError(error.message));
+      },
+      (model) {
+        cachedCategories = model;
+        emit(CategoriesSuccess(model));
+      },
+    );
   }
 
   Future<void> loadCategoryById(
@@ -34,11 +39,16 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     Emitter<CategoriesState> emit,
   ) async {
     emit(CategoriesLoading());
-    try {
-      final category = await repo.getCategoryById(event.categoryId);
-      emit(CategoryByIdSuccess(category));
-    } catch (e) {
-      emit(CategoriesError(e.toString()));
-    }
+
+    final result = await repo.getCategoryById(event.categoryId);
+
+    result.fold(
+      (error) {
+        emit(CategoriesError(error.message));
+      },
+      (model) {
+        emit(CategoryByIdSuccess(model));
+      },
+    );
   }
 }

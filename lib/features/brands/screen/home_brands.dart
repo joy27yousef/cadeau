@@ -1,3 +1,4 @@
+import 'package:cadeau/core/data/apis/request_status%20.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
 import 'package:cadeau/core/widgets/title_home.dart';
 import 'package:cadeau/features/brands/logic/bloc/brands_bloc.dart';
@@ -23,28 +24,45 @@ class HomeBrands extends StatelessWidget {
             Get.toNamed(AppRoutes.allBrands);
           },
         ),
-        SizedBox(height: 15),
-        BlocBuilder<BrandsBloc, BrandsState>(
-          builder: (context, state) {
-            final bloc = context.read<BrandsBloc>();
-            final cached = bloc.cachedBrands;
+        const SizedBox(height: 15),
 
-            if (cached == null) {
+        BlocBuilder<BrandsBloc, BrandsState>(
+          buildWhen: (previous, current) =>
+              previous.brandsStatus != current.brandsStatus ||
+              previous.brands != current.brands,
+          builder: (context, state) {
+            //  Loading
+            if (state.brandsStatus == RequestStatus.loading) {
               return const HomeBrandsSkeleton();
             }
 
-            final brands = cached.data.take(6).toList();
+            // error
+            if (state.brandsStatus == RequestStatus.failure) {
+              return Center(
+                child: Text(
+                  state.error ?? 'Something went wrong',
+                  style: const TextStyle(color: Colors.red),
+                  textAlign: TextAlign.center,
+                ),
+              );
+            }
+
+            final brands = state.brands!.data.take(6).toList();
+
             return SizedBox(
-              height: 65,
+              height: 80,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 5,
+                itemCount: brands.length,
                 itemBuilder: (context, i) {
                   final brand = brands[i];
+
                   return InkWell(
                     onTap: () {
-                      bloc.add(LoadBrandById(brand.brandId));
-                      print(brand.brandNameEnglish);
+                      context.read<BrandsBloc>().add(
+                        LoadBrandById(brand.brandId),
+                      );
+
                       Get.toNamed(
                         AppRoutes.mainBrandPage,
                         arguments: {
@@ -58,11 +76,12 @@ class HomeBrands extends StatelessWidget {
                     child: Container(
                       height: 65,
                       width: 130,
-                      margin: EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(left: 20),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                         image: DecorationImage(
-                          image: NetworkImage(brands[i].brandLogo),
+                          image: NetworkImage(brand.brandLogo),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -73,7 +92,8 @@ class HomeBrands extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: 30),
+
+        const SizedBox(height: 30),
       ],
     );
   }

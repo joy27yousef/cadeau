@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 class HomeCadeauBox extends StatelessWidget {
-  const HomeCadeauBox({super.key});
+  final bool withMargin;
+  const HomeCadeauBox({super.key, this.withMargin = false});
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +14,10 @@ class HomeCadeauBox extends StatelessWidget {
         Container(
           height: 120,
           padding: EdgeInsets.all(14),
-          margin: const EdgeInsets.symmetric(horizontal: 20),
 
+          margin: withMargin
+              ? const EdgeInsets.symmetric(horizontal: 20)
+              : const EdgeInsets.symmetric(horizontal: 0),
           decoration: BoxDecoration(
             color: Color(0xFFF9F9F9),
             borderRadius: BorderRadius.circular(6),

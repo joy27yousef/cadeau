@@ -39,16 +39,11 @@ class CategoriesAllpage extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 140,
                 width: 140,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  image: DecorationImage(
-                    image: NetworkImage(imagePath),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
+                child: Center(child: Image.network(imagePath, width: 100)),
               ),
               const SizedBox(height: 10),
               Expanded(

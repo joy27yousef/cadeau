@@ -33,7 +33,8 @@ class ProfilePage extends StatelessWidget {
               title: 'Wishlist'.tr,
               icon: Iconsax.heart,
               ontap: () {
-                Get.toNamed(AppRoutes.wishlistPage);
+                final navController = Get.find<NavigationController>();
+                navController.changeIndex(1);
               },
             ),
             ProfileList(

@@ -1,5 +1,6 @@
 import 'package:cadeau/features/occasions/data/models/occasion_by_id_model.dart';
 import 'package:cadeau/features/occasions/data/models/occasions_model.dart';
+import 'package:cadeau/features/occasions/data/models/special_occasions_model.dart';
 
 abstract class OccasionsState {}
 
@@ -15,6 +16,11 @@ class OccasionsSuccess extends OccasionsState {
 class OccasionsByIdSuccess extends OccasionsState {
   final OccasionByIdModel occasions;
   OccasionsByIdSuccess(this.occasions);
+}
+
+class SpecialOccasionsByIdSuccess extends OccasionsState {
+  final SpecialOccasionsModel occasions;
+  SpecialOccasionsByIdSuccess(this.occasions);
 }
 
 class OccasionsError extends OccasionsState {
