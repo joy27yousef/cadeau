@@ -1,5 +1,5 @@
-
-import 'package:cadeau/features/profile/settings/widgets/showLang.dart';
+import 'package:cadeau/core/routes/app_routes.dart';
+import 'package:cadeau/features/profile/settings/widgets/show_lang.dart';
 import 'package:cadeau/features/profile/widgets/profile_list.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +26,18 @@ class SettingsPage extends StatelessWidget {
             ProfileList(
               title: 'Change Password'.tr,
               icon: Iconsax.password_check,
-              ontap: () {},
+              ontap: () {
+                Get.toNamed(AppRoutes.forgotpassword);
+              },
             ),
 
-            ProfileList(title: 'Delete Account'.tr, icon: Iconsax.trash, ontap: () {}),
+            ProfileList(
+              title: 'Delete Account'.tr,
+              icon: Iconsax.trash,
+              ontap: () {
+                Get.toNamed(AppRoutes.deleteAccount);
+              },
+            ),
           ],
         ),
       ),

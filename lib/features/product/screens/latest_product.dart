@@ -18,11 +18,19 @@ class LatestProduct extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleHome(text: 'Latest'.tr, viewAll: true, onTap: () {}),
+        TitleHome(text: 'Latest'.tr, viewAll: false, onTap: () {}),
         SizedBox(height: 15),
 
         BlocBuilder<ProductBloc, ProductState>(
+          buildWhen: (previous, current) {
+            return current is ProductLatestSuccess ||
+                current is ProductError ||
+                current is ProductLoading;
+          },
           builder: (context, state) {
+            final bloc = context.read<ProductBloc>();
+            final cached = bloc.cachedLatestProduct;
+
             ///  Loading
             if (state is ProductLoading) {
               return SizedBox(
@@ -55,17 +63,17 @@ class LatestProduct extends StatelessWidget {
 
             /// Success
             if (state is ProductLatestSuccess) {
-              final data = state.products.data;
-
               return SizedBox(
                 height: 220,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 3,
+                  itemCount: cached?.data.length,
                   itemBuilder: (context, i) => InkWell(
                     onTap: () {
                       final productBloc = context.read<ProductBloc>();
-                      productBloc.add(LoadProductById(data[i].productId));
+                      productBloc.add(
+                        LoadProductById(cached!.data[i].productId),
+                      );
                       Get.toNamed(AppRoutes.productPage);
                     },
                     borderRadius: BorderRadius.circular(5),
@@ -83,7 +91,9 @@ class LatestProduct extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               image: DecorationImage(
-                                image: NetworkImage(data[i].productImage),
+                                image: NetworkImage(
+                                  cached!.data[i].productImage,
+                                ),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -91,8 +101,8 @@ class LatestProduct extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             dataTranslation(
-                              data[i].productNameArabic,
-                              data[i].productNameEnglish,
+                              cached.data[i].productNameArabic,
+                              cached.data[i].productNameEnglish,
                             ),
                             style: Theme.of(context).textTheme.titleLarge!
                                 .copyWith(
@@ -105,7 +115,7 @@ class LatestProduct extends StatelessWidget {
 
                           SizedBox(height: 3),
                           Text(
-                            data[i].productPrice,
+                            cached.data[i].productPrice,
                             style: Theme.of(context).textTheme.titleLarge!
                                 .copyWith(
                                   fontWeight: FontWeight.w700,
@@ -126,7 +136,7 @@ class LatestProduct extends StatelessWidget {
           },
         ),
 
-        SizedBox(height: 20),
+        SizedBox(height: 30),
       ],
     );
   }

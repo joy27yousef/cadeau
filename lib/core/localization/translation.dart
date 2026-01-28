@@ -245,6 +245,12 @@ class MyTranslation extends Translations {
       'Add some products you love!': 'Add some products you love!',
       'Features': 'Features',
       'Description': 'Description',
+      'Deleta Account': 'Deleta Account',
+      'Are you sure you want to delete Youre account? You will not be able to login again ':
+          'Are you sure you want to delete Youre account? You will not be able to login again ',
+
+      'No, Cancel': 'No, Cancel',
+      'Yes, Delete': "Yes, Delete",
 
       // 'The field is required': 'The field is required',
       // 'The minimum is 8 characters': 'The minimum is 8 characters',
@@ -496,6 +502,11 @@ class MyTranslation extends Translations {
       'Add some products you love!': 'أضف المنتجات التي أحببتها',
       'Features': 'المواصفات',
       'Description': 'الشرح',
+      'Deleta Account': 'حذف الحساب',
+      'Are you sure you want to delete Youre account? You will not be able to login again ':
+          'هل أنت متأكد أنك تريد حذف حسابك? لن تتمكن من تسجيل الدخول إلى حسابك مرة أخرى',
+      'No, Cancel': 'كلا، الغي',
+      'Yes, Delete': "نعم، امسح",
     },
   };
 }

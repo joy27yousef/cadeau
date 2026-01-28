@@ -100,7 +100,8 @@ class HomeOccasions extends StatelessWidget {
             },
           ),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 30),
+
         TitleHome(text: 'Special Occasions'.tr, viewAll: false),
         SizedBox(height: 15),
         BlocBuilder<OccasionsBloc, OccasionsState>(
@@ -172,7 +173,7 @@ class HomeOccasions extends StatelessWidget {
           },
         ),
 
-        SizedBox(height: 20),
+        SizedBox(height: 30),
       ],
     );
   }

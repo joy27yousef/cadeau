@@ -17,7 +17,8 @@ import 'package:cadeau/features/categories/screens/main_category_page.dart';
 import 'package:cadeau/features/categories/screens/all_categories/all_categories_page.dart';
 import 'package:cadeau/features/occasions/screens/all_ocassion/all_ocassion_page.dart';
 import 'package:cadeau/features/product/screens/product_page.dart';
-import 'package:cadeau/features/home/search/saerch_page.dart';
+import 'package:cadeau/features/profile/settings/delete_account/screens/delete_account_page.dart';
+import 'package:cadeau/features/search/screens/saerch_page.dart';
 import 'package:cadeau/features/main_page.dart';
 import 'package:cadeau/features/occasions/screens/main_occasion_page.dart';
 import 'package:cadeau/features/profile/edit_payment/edit_payment_page.dart';
@@ -36,6 +37,7 @@ List<GetPage<dynamic>>? routes = [
   // Auth
   GetPage(name: AppRoutes.signup, page: () => SignupPage()),
   GetPage(name: AppRoutes.login, page: () => LoginPage()),
+  GetPage(name: AppRoutes.deleteAccount, page: () => DeleteAccountPage()),
   GetPage(name: AppRoutes.forgotpassword, page: () => ForgotpasswordPage()),
   // GetPage(name: AppRoutes.resetpassEmailPage, page: () => ResetpassEmailPage()),
   GetPage(name: AppRoutes.resetpasswordPage, page: () => ResetpasswordPage()),

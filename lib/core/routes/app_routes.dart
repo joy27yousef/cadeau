@@ -8,6 +8,7 @@ class AppRoutes {
   static const String verificationPage = "/VerificationPage";
   static const String resetpasswordPage = "/ResetpasswordPage";
   static const String verificationOtpPage = "/VerificationOtpPage";
+  static const String deleteAccount = "/DeleteAccountPage";
   //home
   static const String mainPage = "/MainPage";
   static const String allOcassionPage = "/AllOcassionPage";

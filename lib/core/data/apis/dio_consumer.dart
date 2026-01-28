@@ -32,7 +32,6 @@ class DioConsumer extends ApiConsumer {
     try {
       final response = await dio.get(
         path,
-        data: data,
         queryParameters: queryParameters,
         options: Options(extra: {'sendToken': withToken}),
       );

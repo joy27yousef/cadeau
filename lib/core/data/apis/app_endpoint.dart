@@ -3,6 +3,7 @@ class AppEndpoint {
 
   //!auth
   static const String login = '/login';
+  static const String accountRemoval = '/account-removal';
   static const String logout = '/logout';
   static const String rigister = '/register';
   static const String verifyAccount = '/email-verification';
@@ -18,6 +19,7 @@ class AppEndpoint {
   //! product
   static const String products = '/products';
   static const String latestProducts = '/latest-products';
+  static const String filter = '/products/filter';
   //!wishlist
   static const String wishlistAdd = '/wishlist/add';
   static const String wishlistRemove = '/wishlist/remove';
@@ -83,6 +85,7 @@ class ApiKey {
   static String occasionImage = 'occasionImage';
   //! product
   static const String price = 'price';
+  static const String productPriceFrom = 'productPriceFrom';
   static const String productRating = 'productRating';
   static const String vendorLogo = 'vendorLogo';
   static const String vendorShopNameArabic = 'vendorShopNameArabic';

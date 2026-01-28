@@ -1,6 +1,6 @@
 
-import 'package:cadeau/features/home/search/widgets/product_price_list.dart';
-import 'package:cadeau/features/home/search/widgets/search_input.dart';
+import 'package:cadeau/features/search/screens/widgets/product_price_list.dart';
+import 'package:cadeau/features/search/screens/widgets/search_input.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';

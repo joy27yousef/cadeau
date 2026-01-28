@@ -15,7 +15,7 @@ class LatestProductModel {
 
   factory LatestProductModel.fromJson(Map<String, dynamic> json) {
     return LatestProductModel(
-      status: json[ApiKey.status] == true,
+      status: json[ApiKey.status] ?? false,
       data: (json[ApiKey.data] as List? ?? [])
           .map((e) => ProductItem.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -23,7 +23,6 @@ class LatestProductModel {
       code: json[ApiKey.code] ?? 0,
     );
   }
-
 }
 
 class ProductItem {
@@ -68,5 +67,4 @@ class ProductItem {
       productImage: json[ApiKey.productImage] ?? '',
     );
   }
-
 }

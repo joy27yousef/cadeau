@@ -41,6 +41,24 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     );
   }
 
+  // Future<void> loadAllProduct(
+  //   LoadAllProduct event,
+  //   Emitter<ProductState> emit,
+  // ) async {
+  //   emit(ProductLoading());
+
+  //   final products = await repo.getAllProducts();
+
+  //   products.fold(
+  //     (error) {
+  //       emit(ProductError(error.message));
+  //     },
+  //     (model) {
+  //       cachedProducts = model;
+  //       emit(ProductSuccess(model));
+  //     },
+  //   );
+  // }
   Future<void> loadAllProduct(
     LoadAllProduct event,
     Emitter<ProductState> emit,
@@ -54,8 +72,18 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(ProductError(error.message));
       },
       (model) {
-        cachedProducts = model;
-        emit(ProductSuccess(model));
+        final sortedProducts = List<ProductData>.from(model.data)
+          ..sort((a, b) => b.productRating.compareTo(a.productRating));
+
+        final sortedModel = AllProductModel(
+          status: model.status,
+          data: sortedProducts,
+          message: model.message,
+          code: model.code,
+        );
+
+        cachedProducts = sortedModel;
+        emit(ProductSuccess(sortedModel));
       },
     );
   }

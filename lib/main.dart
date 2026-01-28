@@ -15,6 +15,8 @@ import 'package:cadeau/features/occasions/logic/bloc/occasions_event.dart';
 import 'package:cadeau/features/product/data/repository/product_repo.dart';
 import 'package:cadeau/features/product/logic/bloc/product_bloc.dart';
 import 'package:cadeau/features/product/logic/bloc/product_event.dart';
+import 'package:cadeau/features/search/data/repository/searchProduct_repo.dart';
+import 'package:cadeau/features/search/logic/bloc/search_bloc.dart';
 import 'package:cadeau/features/wishlist/data/repository/wishlist_repo.dart';
 import 'package:cadeau/features/wishlist/logic/bloc/wishlist_bloc.dart';
 import 'package:cadeau/features/wishlist/logic/bloc/wishlist_event.dart';
@@ -44,10 +46,11 @@ void main() async {
           )..add(LoadCategories()),
         ),
         BlocProvider(
-          create: (_) => BrandsBloc(
-            repo: BrandsRepo(api: DioConsumer(dio: Dio())),
-          )..add(LoadBrands()),
+          create: (_) => SearchBloc(
+            repo: SearchproductRepo(api: DioConsumer(dio: Dio())),
+          ),
         ),
+
         BlocProvider(
           create: (_) =>
               OccasionsBloc(
