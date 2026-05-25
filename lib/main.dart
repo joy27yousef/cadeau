@@ -1,22 +1,10 @@
 import 'package:cadeau/core/constant/app_theme.dart';
-import 'package:cadeau/core/data/apis/dio_consumer.dart';
 import 'package:cadeau/core/localization/change_local.dart';
 import 'package:cadeau/core/localization/translation.dart';
+import 'package:cadeau/core/network/apis/dio_consumer.dart';
 import 'package:cadeau/core/routes/routes.dart';
+import 'package:cadeau/core/services/service_locator.dart';
 import 'package:cadeau/core/services/services.dart';
-import 'package:cadeau/features/brands/data/repository/brands_repo.dart';
-import 'package:cadeau/features/brands/logic/bloc/brands_bloc.dart';
-import 'package:cadeau/features/brands/logic/bloc/brands_event.dart';
-import 'package:cadeau/features/categories/data/repository/categories_repo.dart';
-import 'package:cadeau/features/categories/logic/bloc/categories_bloc.dart';
-import 'package:cadeau/features/occasions/data/repository/occasion_repo.dart';
-import 'package:cadeau/features/occasions/logic/bloc/occasions_bloc.dart';
-import 'package:cadeau/features/occasions/logic/bloc/occasions_event.dart';
-import 'package:cadeau/features/product/data/repository/product_repo.dart';
-import 'package:cadeau/features/product/logic/bloc/product_bloc.dart';
-import 'package:cadeau/features/product/logic/bloc/product_event.dart';
-import 'package:cadeau/features/search/data/repository/searchProduct_repo.dart';
-import 'package:cadeau/features/search/logic/bloc/search_bloc.dart';
 import 'package:cadeau/features/wishlist/data/repository/wishlist_repo.dart';
 import 'package:cadeau/features/wishlist/logic/bloc/wishlist_bloc.dart';
 import 'package:cadeau/features/wishlist/logic/bloc/wishlist_event.dart';
@@ -41,36 +29,7 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => CategoriesBloc(
-            repo: CategoriesRepo(api: DioConsumer(dio: Dio())),
-          )..add(LoadCategories()),
-        ),
-        BlocProvider(
-          create: (_) => SearchBloc(
-            repo: SearchproductRepo(api: DioConsumer(dio: Dio())),
-          ),
-        ),
-
-        BlocProvider(
-          create: (_) =>
-              OccasionsBloc(
-                  repo: OccasionRepo(api: DioConsumer(dio: Dio())),
-                )
-                ..add(LoadOccasions())
-                ..add(LoadSpecialOccasions()),
-        ),
-        BlocProvider(
-          create: (_) => WishlistBloc(
-            repo: WishlistRepo(api: DioConsumer(dio: Dio())),
-          )..add(LoadWishlist()),
-        ),
-        BlocProvider(
-          create: (_) =>
-              ProductBloc(
-                  repo: ProductRepo(api: DioConsumer(dio: Dio())),
-                )
-                ..add(LoadAllProduct())
-                ..add(LoadLatestProduct()),
+          create: (_) => WishlistBloc(repo: sl())..add(LoadWishlist()),
         ),
       ],
       child: MyApp(),

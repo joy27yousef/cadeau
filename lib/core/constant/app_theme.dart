@@ -33,28 +33,28 @@ ThemeData englishTheme = ThemeData(
 );
 
 ThemeData arabicTheme = ThemeData(
+  fontFamily: AppFonts.alexandria,
   scaffoldBackgroundColor: AppColor.background,
   appBarTheme: AppBarTheme(
     backgroundColor: AppColor.background,
     elevation: 0,
     scrolledUnderElevation: 0,
-
     titleTextStyle: TextStyle(
-      fontFamily: AppFonts.arabic,
+      fontFamily: AppFonts.alexandria,
       color: AppColor.black,
-      fontSize: 16,
+      fontSize: 17,
       fontWeight: FontWeight.w400,
     ),
   ),
   textTheme: TextTheme(
     titleLarge: TextStyle(
-      fontFamily: AppFonts.arabic,
+      fontFamily: AppFonts.alexandria,
       color: AppColor.black,
-      fontSize: 20,
+      fontSize: 22,
       fontWeight: FontWeight.w600,
     ),
     titleSmall: TextStyle(
-      fontFamily: AppFonts.arabic,
+      fontFamily: AppFonts.alexandria,
       color: AppColor.greyLight,
       fontSize: 14,
       fontWeight: FontWeight.w400,

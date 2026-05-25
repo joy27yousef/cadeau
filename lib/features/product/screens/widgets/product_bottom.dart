@@ -28,14 +28,11 @@ class ProductBottom extends StatelessWidget {
                   current is AddWishlistSuccess ||
                   current is RemoveWishlistSuccess,
               builder: (context, _) {
-                final liked =
-                    context
-                        .watch<WishlistBloc>()
-                        .cachedWishlist
-                        ?.data
-                        ?.wishlistItems
-                        .any((e) => e.id == id) ??
-                    false;
+                final state = context.watch<WishlistBloc>().state;
+
+                final liked = state is LoadWishlistSuccess
+                    ? state.wishlist.data?.wishlistItems.any((e) => e.id == id)
+                    : false;
 
                 return Container(
                   height: 43,

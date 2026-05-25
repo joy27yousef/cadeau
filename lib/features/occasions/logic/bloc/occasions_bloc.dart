@@ -1,5 +1,4 @@
-import 'package:cadeau/features/occasions/data/models/occasions_model.dart';
-import 'package:cadeau/features/occasions/data/models/special_occasions_model.dart';
+
 import 'package:cadeau/features/occasions/data/repository/occasion_repo.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_event.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_state.dart';
@@ -8,13 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class OccasionsBloc extends Bloc<OccasionsEvent, OccasionsState> {
   final OccasionRepo repo;
 
-  OccasionsModel? cachedOccasions;
-  SpecialOccasionsModel? cachedSpecialOccasions;
-
   OccasionsBloc({required this.repo}) : super(OccasionsInitial()) {
     on<LoadOccasions>(loadOccasions);
     on<LoadOccasionsById>(loadOccasionsById);
-    on<LoadSpecialOccasions>(loadSpecialOccasions);
+
   }
 
   Future<void> loadOccasions(
@@ -29,7 +25,6 @@ class OccasionsBloc extends Bloc<OccasionsEvent, OccasionsState> {
         emit(OccasionsError(error.message));
       },
       (model) {
-        cachedOccasions = model;
         emit(OccasionsSuccess(model));
       },
     );
@@ -39,12 +34,12 @@ class OccasionsBloc extends Bloc<OccasionsEvent, OccasionsState> {
     LoadOccasionsById event,
     Emitter<OccasionsState> emit,
   ) async {
-    emit(OccasionsLoading());
+    emit(OccasionsByIdLoading());
 
     final occasion = await repo.getOccasionById(event.occasionsId);
     occasion.fold(
       (error) {
-        emit(OccasionsError(error.message));
+        emit(OccasionsByIdError(error.message));
       },
       (model) {
         emit(OccasionsByIdSuccess(model));
@@ -52,21 +47,4 @@ class OccasionsBloc extends Bloc<OccasionsEvent, OccasionsState> {
     );
   }
 
-  Future<void> loadSpecialOccasions(
-    LoadSpecialOccasions event,
-    Emitter<OccasionsState> emit,
-  ) async {
-    emit(OccasionsLoading());
-
-    final occasions = await repo.getSpecialOccasions();
-    occasions.fold(
-      (error) {
-        emit(OccasionsError(error.message));
-      },
-      (model) {
-        cachedSpecialOccasions = model;
-        emit(SpecialOccasionsByIdSuccess(model));
-      },
-    );
-  }
 }

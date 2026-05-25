@@ -1,5 +1,4 @@
 import 'package:cadeau/features/product/data/models/all_product_model.dart';
-import 'package:cadeau/features/product/data/models/latest_product_model.dart';
 import 'package:cadeau/features/product/data/models/product_by_id_model.dart';
 
 abstract class ProductState {}
@@ -11,11 +10,6 @@ class ProductLoading extends ProductState {}
 class ProductSuccess extends ProductState {
   final AllProductModel products;
   ProductSuccess(this.products);
-}
-
-class ProductLatestSuccess extends ProductState {
-  final LatestProductModel products;
-  ProductLatestSuccess(this.products);
 }
 
 class ProductError extends ProductState {

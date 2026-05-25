@@ -6,10 +6,6 @@ class LoadProductById extends ProductEvent {
   final String productId;
   LoadProductById(this.productId);
 }
-class LoadLatestProduct extends ProductEvent {
-
-
-}
 
 class SelectVariantAttribute extends ProductEvent {
   final String attribute;

@@ -1,15 +1,13 @@
 import 'package:cadeau/core/constant/app_color.dart';
-import 'package:cadeau/core/data/apis/dio_consumer.dart';
 import 'package:cadeau/core/functions/message.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
+import 'package:cadeau/core/services/service_locator.dart';
 import 'package:cadeau/core/widgets/box_buttom.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
-import 'package:cadeau/features/auth/forgotPassword/data/repository/reset_pass_repo.dart';
 import 'package:cadeau/features/auth/forgotPassword/logic/bloc/reset_password_bloc.dart';
 import 'package:cadeau/features/auth/forgotPassword/logic/bloc/reset_password_event.dart';
 import 'package:cadeau/features/auth/forgotPassword/logic/bloc/reset_password_state.dart';
 import 'package:cadeau/features/auth/forgotPassword/screens/resetPassword/widgets/reset_password_input.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -23,8 +21,7 @@ class ResetpasswordPage extends StatelessWidget {
       appBar: AppbarScreens(title: 'Reset Password'.tr),
       body: BlocProvider(
         create: (_) {
-          final repo = ResetPassRepo(api: DioConsumer(dio: Dio()));
-          return ResetPasswordBloc(repo);
+          return ResetPasswordBloc(sl());
         },
         child: Padding(
           padding: const EdgeInsets.all(18),
@@ -44,7 +41,7 @@ class ResetpasswordPage extends StatelessWidget {
                   } else if (state is ResetPasswordFailure) {
                     showMessage(
                       context,
-                      message: state.error.message,
+                      message: state.errorMessage,
                       isSuccess: false,
                     );
                   }

@@ -68,7 +68,7 @@ class _HomeScrollAdsState extends State<HomeScrollAds> {
                   image: AssetImage(images[index]),
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),

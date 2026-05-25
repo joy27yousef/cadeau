@@ -157,10 +157,10 @@ class MyTranslation extends Translations {
       // 75
       'Shop By Brand': 'Shop By Brand',
       // 76
-      'Cadeau Boutique': 'Cadeau Boutique',
+      'Bella Regalo': 'Bella Regalo',
       // 77
-      'Send Your Best. For all occasions, ages, friends and family, Cadeau Boutique will always be with you. ':
-          'Send Your Best. For all occasions, ages, friends and family, Cadeau Boutique will always be with you. ',
+      'Send Your Best. For all occasions, ages, friends and family, Bella Regalo will always be with you. ':
+          'Send Your Best. For all occasions, ages, friends and family, Bella Regalo will always be with you. ',
       // 78
       'Categories': 'Categories',
       // 79
@@ -251,6 +251,39 @@ class MyTranslation extends Translations {
 
       'No, Cancel': 'No, Cancel',
       'Yes, Delete': "Yes, Delete",
+      'Have fun and find your gift': "Have fun and find your gift",
+      'product reviews': "product reviews",
+      'Add Review': "Add Review",
+      'Your Cart Is Empty': "Your Cart Is Empty",
+      'Add items to start shopping': "Add items to start shopping",
+      'Do you really want to delete the product from the cart?':
+          "Do you really want to delete the product from the cart?",
+      'Filter Options': 'Filter Options',
+      'Price Range': 'Price Range',
+      'Specifications': 'Specifications',
+      'Color': 'Color',
+      'Min': 'Min',
+      'Max': 'Max',
+      'Storage (GB)': 'Storage (GB)',
+      'Size': 'Size',
+      'Reset': 'Reset',
+      'Apply Filters': 'Apply Filters',
+      'Receiver Name': 'Receiver Name',
+      'Address': 'Address',
+      'Total price': 'Total price',
+      'Items :': 'Items :',
+      'No orders yet': 'No orders yet',
+      "You haven't placed any orders yet.":
+          "You haven't placed any orders yet.",
+      'There are currently no orders': 'There are currently no orders',
+      "Shop and order your own gift": "Shop and order your own gift",
+      'Are you sure you want to log out of the app ? ':
+          'Are you sure you want to log out of the app ? ',
+      'Yes, Logout': 'Yes, Logout',
+      'Home': 'Home',
+      'WishList': 'WishList',
+      'Track': 'Track',
+      'Profile': 'Profile',
 
       // 'The field is required': 'The field is required',
       // 'The minimum is 8 characters': 'The minimum is 8 characters',
@@ -414,10 +447,10 @@ class MyTranslation extends Translations {
       // 75
       'Shop By Brand': 'تسوق حسب الماركة',
       // 76
-      'Cadeau Boutique': 'بوتيك كادو',
+      'Bella Regalo': 'بيلا ريغالو',
       // 77
-      'Send Your Best. For all occasions, ages, friends and family, Cadeau Boutique will always be with you. ':
-          'أرسل الأفضل. في جميع المناسبات والأعمار، للأصدقاء والعائلة، بوتيك كادو سيكون دائماً معك.',
+      'Send Your Best. For all occasions, ages, friends and family, Bella Regalo will always be with you. ':
+          'أرسل الأفضل. في جميع المناسبات والأعمار، للأصدقاء والعائلة،  بيلا ريغالو سيكون دائماً معك.',
       // 78
       'Categories': 'الفئات',
       // 79
@@ -507,6 +540,37 @@ class MyTranslation extends Translations {
           'هل أنت متأكد أنك تريد حذف حسابك? لن تتمكن من تسجيل الدخول إلى حسابك مرة أخرى',
       'No, Cancel': 'كلا، الغي',
       'Yes, Delete': "نعم، امسح",
+      'Have fun and find your gift': "استمتع وابحث عن هديتك",
+      'product reviews': "مراجعات المنتج",
+      'Add Review': "أضف تقييمك",
+      'Your Cart Is Empty': "محفظتك فارغة",
+      'Add items to start shopping': "أضف المنتجات وابدأ رحلة التسوق",
+      "Do you really want to delete the product from the cart?":
+          'هل حقا تريد حذف المنتج؟؟',
+      'Filter Options': 'خيارات التصفية',
+      'Price Range': 'نطاق السعر',
+      'Specifications': 'المواصفات',
+      'Color': 'اللون',
+      'Min': 'الأدنى',
+      'Max': 'الأعلى',
+      'Storage (GB)': 'سعة التخزين (GB)',
+      'Size': 'المقاس',
+      'Reset': 'إعادة تعيين',
+      'Apply Filters': 'تطبيق التصفية', 'Receiver Name': 'اسم المستلم',
+      'Address': 'العنوان',
+      'Total price': 'السعر الإجمالي',
+      'Items :': 'المنتجات :',
+      'No orders yet': 'لا توجد طلبات',
+      "You haven't placed any orders yet.": 'لم تقم بوضع أي طلبات بعد.',
+      'There are currently no orders': 'لا يوجد طلبات حاليا',
+      "Shop and order your own gift": "تسوق واطلب هديتك الخاصة",
+      'Are you sure you want to log out of the app ? ':
+          'هل أنت متأكد أنك تريد تسجيل الخروج من التطبيق؟',
+      'Yes, Logout': 'نعم، تسجيل الخروج',
+      'Home': 'الرئيسية',
+      'WishList': 'المفضلة',
+      'Track': 'تتبع الطلب',
+      'Profile': 'الشخصية',
     },
   };
 }

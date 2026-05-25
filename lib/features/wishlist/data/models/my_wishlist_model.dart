@@ -1,4 +1,4 @@
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 
 class MyWishlistModel {
   final bool status;
@@ -89,8 +89,8 @@ class WishlistItem {
   factory WishlistItem.fromJson(Map<String, dynamic> json) {
     return WishlistItem(
       id: json[ApiKey.id]?.toString() ?? '',
-      nameEn: json[ApiKey.nameen] ?? '',
-      nameAr: json[ApiKey.namear] ?? '',
+      nameEn: json[ApiKey.name_en] ?? '',
+      nameAr: json[ApiKey.name_ar] ?? '',
       descriptionEn: json[ApiKey.descriptionen] ?? '',
       descriptionAr: json[ApiKey.descriptionar] ?? '',
       price: json[ApiKey.price]?.toString() ?? '0',

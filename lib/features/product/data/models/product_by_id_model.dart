@@ -1,4 +1,4 @@
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 
 class ProductByIdModel {
   final bool status;
@@ -25,6 +25,10 @@ class ProductByIdModel {
 
 class ProductDetailsData {
   final String productId;
+  final String vendorId;
+  final String? vendorLogo;
+  final String vendorShopNameEnglish;
+  final String vendorShopNameArabic;
   final String categoryId;
   final String categoryNameEnglish;
   final String categoryNameArabic;
@@ -44,6 +48,10 @@ class ProductDetailsData {
 
   ProductDetailsData({
     required this.productId,
+    required this.vendorId,
+    this.vendorLogo,
+    required this.vendorShopNameEnglish,
+    required this.vendorShopNameArabic,
     required this.categoryId,
     required this.categoryNameEnglish,
     required this.categoryNameArabic,
@@ -65,6 +73,10 @@ class ProductDetailsData {
   factory ProductDetailsData.fromJson(Map<String, dynamic> json) {
     return ProductDetailsData(
       productId: json[ApiKey.productId]?.toString() ?? '',
+      vendorId: json[ApiKey.vendorId]?.toString() ?? '',
+      vendorLogo: json[ApiKey.vendorLogo],
+      vendorShopNameEnglish: json[ApiKey.vendorShopNameEnglish] ?? '',
+      vendorShopNameArabic: json[ApiKey.vendorShopNameArabic] ?? '',
       categoryId: json[ApiKey.categoryId]?.toString() ?? '',
       categoryNameEnglish: json[ApiKey.categoryNameEnglish] ?? '',
       categoryNameArabic: json[ApiKey.categoryNameArabic] ?? '',
@@ -76,9 +88,15 @@ class ProductDetailsData {
       productDescriptionEnglish: json[ApiKey.productDescriptionEnglish] ?? '',
       productDescriptionArabic: json[ApiKey.productDescriptionArabic] ?? '',
       price: json[ApiKey.price]?.toString() ?? '0',
-      featuresEnglish: Map<String, dynamic>.from(json[ApiKey.featuresEnglish] ?? {}),
-      featuresArabic: Map<String, dynamic>.from(json[ApiKey.featuresArabic] ?? {}),
-      images: (json[ApiKey.images] as List? ?? []).map((e) => e.toString()).toList(),
+      featuresEnglish: Map<String, dynamic>.from(
+        json[ApiKey.featuresEnglish] ?? {},
+      ),
+      featuresArabic: Map<String, dynamic>.from(
+        json[ApiKey.featuresArabic] ?? {},
+      ),
+      images: (json[ApiKey.images] as List? ?? [])
+          .map((e) => e.toString())
+          .toList(),
       variants: (json[ApiKey.variants] as List? ?? [])
           .map((e) => ProductVariant.fromJson(e))
           .toList(),
@@ -95,7 +113,8 @@ class ProductVariant {
   final String variantPrice;
   final String stockQuantity;
   final bool inStock;
-  final Map<String, dynamic> attributes;
+  final Map<String, dynamic> attributesEn;
+  final Map<String, dynamic> attributesAr;
 
   ProductVariant({
     required this.variantId,
@@ -103,7 +122,8 @@ class ProductVariant {
     required this.variantPrice,
     required this.stockQuantity,
     required this.inStock,
-    required this.attributes,
+    required this.attributesEn,
+    required this.attributesAr,
   });
 
   factory ProductVariant.fromJson(Map<String, dynamic> json) {
@@ -113,7 +133,8 @@ class ProductVariant {
       variantPrice: json[ApiKey.variantPrice]?.toString() ?? '0',
       stockQuantity: json[ApiKey.stockQuantity]?.toString() ?? '0',
       inStock: json[ApiKey.inStock] ?? false,
-      attributes: Map<String, dynamic>.from(json[ApiKey.attributes] ?? {}),
+      attributesEn: Map<String, dynamic>.from(json[ApiKey.attributesEn] ?? {}),
+      attributesAr: Map<String, dynamic>.from(json[ApiKey.attributesAr] ?? {}),
     );
   }
 }
@@ -121,7 +142,7 @@ class ProductVariant {
 class ProductRating {
   final String ratingId;
   final double rating;
-  final String review;
+  final String? review;
   final String userId;
   final String userName;
   final String createdAt;
@@ -129,7 +150,7 @@ class ProductRating {
   ProductRating({
     required this.ratingId,
     required this.rating,
-    required this.review,
+    this.review,
     required this.userId,
     required this.userName,
     required this.createdAt,
@@ -139,7 +160,7 @@ class ProductRating {
     return ProductRating(
       ratingId: json[ApiKey.ratingId]?.toString() ?? '',
       rating: double.tryParse(json[ApiKey.rating]?.toString() ?? '') ?? 0.0,
-      review: json[ApiKey.review] ?? '',
+      review: json[ApiKey.review],
       userId: json[ApiKey.userId]?.toString() ?? '',
       userName: json[ApiKey.userName] ?? '',
       createdAt: json[ApiKey.createdAt] ?? '',

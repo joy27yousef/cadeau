@@ -1,4 +1,4 @@
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 
 class AllProductModel {
   final bool status;
@@ -44,7 +44,7 @@ class ProductData {
   final String productNameArabic;
   final String productPrice;
   final String productImage;
-  final int productRating;
+  final double productRating;
 
   ProductData({
     required this.productId,
@@ -82,7 +82,7 @@ class ProductData {
       productNameArabic: json[ApiKey.productNameArabic] ?? '',
       productPrice: json[ApiKey.productPrice]?.toString() ?? '0',
       productImage: json[ApiKey.productImage] ?? '',
-      productRating: json[ApiKey.productRating] ?? 0,
+      productRating: (json[ApiKey.productRating] as num?)?.toDouble() ?? 0.0,
     );
   }
 }

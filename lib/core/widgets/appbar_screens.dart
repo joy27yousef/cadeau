@@ -1,25 +1,34 @@
-
 import 'package:cadeau/core/constant/app_images.dart';
 import 'package:cadeau/core/widgets/leadingBack.dart';
 import 'package:flutter/material.dart';
 
-
 class AppbarScreens extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final bool? isCenter;
 
-  const AppbarScreens({super.key, required this.title});
+  AppbarScreens({super.key, required this.title, this.isCenter = false});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leading: const Leadingback(),
-
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(title, style: Theme.of(context).appBarTheme.titleTextStyle),
-        ],
-      ),
+      centerTitle: isCenter,
+      title: isCenter == true
+          ? Text(
+              title,
+              style: Theme.of(
+                context,
+              ).appBarTheme.titleTextStyle!.copyWith(fontSize: 18),
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  title,
+                  style: Theme.of(context).appBarTheme.titleTextStyle,
+                ),
+              ],
+            ),
     );
   }
 

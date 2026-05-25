@@ -1,5 +1,4 @@
 import 'package:cadeau/features/product/data/models/all_product_model.dart';
-import 'package:cadeau/features/product/data/models/latest_product_model.dart';
 import 'package:cadeau/features/product/data/models/product_by_id_model.dart';
 import 'package:cadeau/features/product/data/repository/product_repo.dart';
 import 'package:cadeau/features/product/logic/bloc/product_event.dart';
@@ -8,57 +7,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductRepo repo;
-  AllProductModel? cachedProducts;
-  LatestProductModel? cachedLatestProduct;
 
   ProductBloc({required this.repo}) : super(ProductInitial()) {
     on<LoadAllProduct>(loadAllProduct);
     on<LoadProductById>(loadProductById);
     on<SelectAttribute>(onSelectAttribute);
-    on<LoadLatestProduct>(loadLatestProduct);
-  }
-  Future<void> loadLatestProduct(
-    LoadLatestProduct event,
-    Emitter<ProductState> emit,
-  ) async {
-    if (cachedLatestProduct != null) {
-      emit(ProductLatestSuccess(cachedLatestProduct!));
-      return;
-    }
-
-    emit(ProductLoading());
-
-    final products = await repo.getLatestProduct();
-
-    products.fold(
-      (error) {
-        emit(ProductError(error.message));
-      },
-      (model) {
-        cachedLatestProduct = model;
-        emit(ProductLatestSuccess(model));
-      },
-    );
   }
 
-  // Future<void> loadAllProduct(
-  //   LoadAllProduct event,
-  //   Emitter<ProductState> emit,
-  // ) async {
-  //   emit(ProductLoading());
-
-  //   final products = await repo.getAllProducts();
-
-  //   products.fold(
-  //     (error) {
-  //       emit(ProductError(error.message));
-  //     },
-  //     (model) {
-  //       cachedProducts = model;
-  //       emit(ProductSuccess(model));
-  //     },
-  //   );
-  // }
   Future<void> loadAllProduct(
     LoadAllProduct event,
     Emitter<ProductState> emit,
@@ -82,7 +37,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           code: model.code,
         );
 
-        cachedProducts = sortedModel;
         emit(ProductSuccess(sortedModel));
       },
     );
@@ -132,6 +86,39 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     }
   }
 
+  // 1. تابع استخراج الفلاتر (متوافق مع تغير اللغة)
+  Map<String, Set<String>> extractFilters(
+    List<ProductVariant> variants, {
+    bool isArabic = false,
+  }) {
+    final Map<String, Set<String>> filters = {};
+
+    for (final variant in variants) {
+      // نحدد أي خريطة نستخدم بناءً على لغة واجهة التطبيق
+      final targetAttributes = isArabic
+          ? variant.attributesAr
+          : variant.attributesEn;
+
+      targetAttributes.forEach((key, value) {
+        if (value != null) {
+          filters.putIfAbsent(key, () => <String>{});
+          filters[key]!.add(value.toString());
+        }
+      });
+    }
+
+    return filters;
+  }
+
+  // 2. تابع استخراج الخصائص (هو نفسه السابق ولكن ليتوافق مع استدعاء الـ UI الخاص بك)
+  Map<String, Set<String>> extractAttributes(
+    List<ProductVariant> variants, {
+    bool isArabic = false,
+  }) {
+    return extractFilters(variants, isArabic: isArabic);
+  }
+
+  // 3. تابع البحث عن الـ Variant المطابق (يبحث في اللغتين ليكون آمناً تماماً)
   ProductVariant? findMatchingVariant(
     List<ProductVariant> variants,
     Map<String, String> selectedAttributes,
@@ -139,7 +126,11 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     for (final variant in variants) {
       bool match = true;
       for (final entry in selectedAttributes.entries) {
-        if (variant.attributes[entry.key]?.toString() != entry.value) {
+        final valueInEn = variant.attributesEn[entry.key]?.toString();
+        final valueInAr = variant.attributesAr[entry.key]?.toString();
+
+        // إذا كانت القيمة المحددة لا تطابق الإنكليزية ولا العربية إذن ليس هذا الـ variant
+        if (valueInEn != entry.value && valueInAr != entry.value) {
           match = false;
           break;
         }
@@ -147,16 +138,5 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       if (match) return variant;
     }
     return null;
-  }
-
-  Map<String, Set<String>> extractAttributes(List<ProductVariant> variants) {
-    final Map<String, Set<String>> result = {};
-    for (final variant in variants) {
-      variant.attributes.forEach((key, value) {
-        result.putIfAbsent(key, () => <String>{});
-        result[key]!.add(value.toString());
-      });
-    }
-    return result;
   }
 }

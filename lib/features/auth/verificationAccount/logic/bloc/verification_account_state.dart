@@ -20,7 +20,7 @@ class VerificationAccountSuccess extends VerificationAccountState {
 }
 
 class VerificationAccountFailure extends VerificationAccountState {
-  final ErrorModel error;
+  final String error;
   VerificationAccountFailure(this.error);
 
   @override

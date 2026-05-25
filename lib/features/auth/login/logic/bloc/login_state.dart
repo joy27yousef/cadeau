@@ -1,4 +1,3 @@
-import 'package:cadeau/core/data/error/errorModel.dart';
 import 'package:cadeau/features/auth/login/data/model/login_model.dart';
 import 'package:equatable/equatable.dart';
 
@@ -20,7 +19,7 @@ class LoginSuccess extends LoginState {
 }
 
 class LoginFailure extends LoginState {
-  final ErrorModel error;
+  final String error;
   LoginFailure(this.error);
 
   @override

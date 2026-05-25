@@ -26,11 +26,7 @@ class SignupBottom extends StatelessWidget {
               );
               Get.offAllNamed(AppRoutes.verificationOtpPage);
             } else if (state is RegisterFailure) {
-              showMessage(
-                context,
-                message: state.error.message,
-                isSuccess: false,
-              );
+              showMessage(context, message: state.error, isSuccess: false);
             }
           },
           builder: (context, state) {
@@ -47,8 +43,10 @@ class SignupBottom extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 15),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+
           children: [
             Text(
               'Already have an account? '.tr,

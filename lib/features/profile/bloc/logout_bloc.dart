@@ -1,5 +1,5 @@
 import 'package:cadeau/core/cache/cacheHelper.dart';
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 import 'package:cadeau/features/profile/bloc/logout_event.dart';
 import 'package:cadeau/features/profile/bloc/logout_state.dart';
 import 'package:cadeau/features/profile/data/repository/logout_repo.dart';
@@ -21,7 +21,7 @@ class LogoutBloc extends Bloc<LogoutEvent, LogoutState> {
 
     await result.fold(
       (error) async {
-        emit(LogoutFailure(error));
+        emit(LogoutFailure(error.message));
         await Future.delayed(const Duration(seconds: 1));
         if (!emit.isDone) emit(LogoutInitial());
       },

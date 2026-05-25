@@ -41,15 +41,15 @@ class _BoxtextState extends State<BoxButtom>
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.isLoading ? null : widget.ontapfun,
-      borderRadius: BorderRadius.circular(6),
+      borderRadius: BorderRadius.circular(10),
       child: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
           return Container(
-            height: 40,
+            height: 45,
             decoration: BoxDecoration(
               color: widget.color,
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(10),
             ),
             child: Stack(
               alignment: Alignment.center,
@@ -84,7 +84,7 @@ class _BoxtextState extends State<BoxButtom>
                       child: Container(
                         decoration: BoxDecoration(
                           color: widget.color,
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                     ),

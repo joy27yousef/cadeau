@@ -1,4 +1,3 @@
-import 'package:cadeau/core/data/error/errorModel.dart';
 import 'package:cadeau/features/auth/forgotPassword/data/models/reset_pass_model.dart';
 import 'package:cadeau/features/auth/forgotPassword/data/models/send_email_model.dart';
 import 'package:equatable/equatable.dart';
@@ -21,11 +20,9 @@ class SendEmailResendSuccess extends ResetPasswordState {
 }
 
 class SendEmailResendFailure extends ResetPasswordState {
-  final ErrorModel error;
-  SendEmailResendFailure(this.error);
+  final String errorMessage;
 
-  @override
-  List<Object?> get props => [error];
+  SendEmailResendFailure(this.errorMessage);
 }
 
 class ResetPasswordLoading extends ResetPasswordState {}
@@ -39,9 +36,6 @@ class ResetPasswordSuccess extends ResetPasswordState {
 }
 
 class ResetPasswordFailure extends ResetPasswordState {
-  final ErrorModel error;
-  ResetPasswordFailure(this.error);
-
-  @override
-  List<Object?> get props => [error];
+  final String errorMessage;
+  ResetPasswordFailure(this.errorMessage);
 }

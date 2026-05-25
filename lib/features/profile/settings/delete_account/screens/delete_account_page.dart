@@ -1,4 +1,4 @@
-import 'package:cadeau/core/data/apis/dio_consumer.dart';
+import 'package:cadeau/core/services/service_locator.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
 import 'package:cadeau/features/profile/settings/delete_account/data/repository/delete_account_repo.dart';
 import 'package:cadeau/features/profile/settings/delete_account/logic/bloc/delete_account_bloc.dart';
@@ -19,8 +19,7 @@ class DeleteAccountPage extends StatelessWidget {
       appBar: AppbarScreens(title: 'Deleta Account'.tr),
       body: BlocProvider(
         create: (_) {
-          final repo = DeleteAccountRepo(api: DioConsumer(dio: Dio()));
-          return DeleteAccountBloc(repo);
+          return DeleteAccountBloc(sl());
         },
         child: Padding(
           padding: const EdgeInsets.all(20),

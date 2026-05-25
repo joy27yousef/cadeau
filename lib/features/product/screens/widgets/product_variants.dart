@@ -10,12 +10,17 @@ class ProductVariants extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // تحديد إذا كانت لغة التطبيق الحالية هي العربية
+    final bool isArabic = Localizations.localeOf(context).languageCode == 'ar';
+
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         if (state is! ProductByIdSuccess) return const SizedBox();
 
+        // قمنا هنا بتمرير التعديل الجديد (isArabic) للتابع داخل البلوك
         final attributes = context.read<ProductBloc>().extractAttributes(
           state.product.data.variants,
+          isArabic: isArabic,
         );
 
         return Column(

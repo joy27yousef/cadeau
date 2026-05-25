@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 import 'package:cadeau/features/categories/data/model/categories_model.dart';
 
 class CategoryByIdModel {

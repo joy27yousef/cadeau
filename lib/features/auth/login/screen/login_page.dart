@@ -1,4 +1,4 @@
-import 'package:cadeau/core/data/apis/dio_consumer.dart';
+import 'package:cadeau/core/services/service_locator.dart';
 import 'package:cadeau/features/auth/login/data/repository/login_repo.dart';
 import 'package:cadeau/features/auth/login/logic/bloc/login_bloc.dart';
 import 'package:cadeau/features/auth/login/screen/widgets/login_bottom.dart';
@@ -16,8 +16,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<LoginBloc>(
       create: (_) {
-        final repo = LoginRepo(api: DioConsumer(dio: Dio()));
-        return LoginBloc(repo);
+        return LoginBloc(sl());
       },
       child: Scaffold(
         body: Padding(

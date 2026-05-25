@@ -11,15 +11,20 @@ class AppRoutes {
   static const String deleteAccount = "/DeleteAccountPage";
   //home
   static const String mainPage = "/MainPage";
+  static const String mainNotification = "/MainNotification";
+  static const String notificationsPage = "/NotificationsPage";
   static const String allOcassionPage = "/AllOcassionPage";
   static const String allBrands = "/AllBrands";
   static const String saerchPage = "/SaerchPage";
-  static const String productPage = "/ProductPage";
   static const String wishlistPage = "/WishlistPage";
   static const String allCategoriesPage = "/AllCategoriesPage";
   static const String mainCategoryPage = "/MainCategoryPage";
   static const String mainOccasionPage = "/MainOccasionPage";
   static const String mainBrandPage = "/MainBrandPage";
+  //product
+  static const String productPage = "/ProductPage";
+  static const String allRatingPage = "/AllRatingPage";
+  static const String addRatingPage = "/AddRatingPage";
   //profile
   static const String editPaymentPage = "/EditPaymentPage";
   static const String editProfilePage = "/EditProfilePage";
@@ -31,4 +36,6 @@ class AppRoutes {
   static const String checkoutPage = "/CheckoutPage";
   static const String completeAymentPage = "/CompleteAymentPage";
   static const String successPay = "/SuccessPay";
+  //social
+  static const String friendProfilePage = "/FriendProfilePage";
 }

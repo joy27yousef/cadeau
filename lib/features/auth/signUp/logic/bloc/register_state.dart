@@ -1,4 +1,3 @@
-import 'package:cadeau/core/data/error/errorModel.dart';
 import 'package:equatable/equatable.dart';
 import '../../data/model/register_model.dart';
 
@@ -20,7 +19,7 @@ class RegisterSuccess extends RegisterState {
 }
 
 class RegisterFailure extends RegisterState {
-  final ErrorModel error;
+  final String error;
   RegisterFailure(this.error);
 
   @override

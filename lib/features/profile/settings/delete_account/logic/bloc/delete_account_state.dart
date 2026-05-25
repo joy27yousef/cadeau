@@ -1,4 +1,3 @@
-import 'package:cadeau/core/data/error/errorModel.dart';
 import 'package:cadeau/features/profile/settings/delete_account/data/models/delete_account_model.dart';
 import 'package:equatable/equatable.dart';
 
@@ -20,7 +19,7 @@ class DeleteAccounSuccess extends DeleteAccountState {
 }
 
 class DeleteAccounFailure extends DeleteAccountState {
-  final ErrorModel error;
+  final String error;
   DeleteAccounFailure(this.error);
 
   @override

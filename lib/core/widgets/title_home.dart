@@ -6,18 +6,22 @@ class TitleHome extends StatelessWidget {
   final String text;
   final Function()? onTap;
   final bool viewAll;
+  final bool withPadding;
 
   const TitleHome({
     super.key,
     required this.text,
     this.onTap,
     this.viewAll = false,
+    this.withPadding = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: withPadding
+          ? const EdgeInsets.symmetric(horizontal: 20)
+          : const EdgeInsets.symmetric(horizontal: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

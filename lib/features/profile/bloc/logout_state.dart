@@ -1,4 +1,3 @@
-import 'package:cadeau/core/data/error/errorModel.dart';
 import 'package:cadeau/features/profile/data/model/logout_model.dart';
 import 'package:equatable/equatable.dart';
 
@@ -20,7 +19,7 @@ class LogoutSuccess extends LogoutState {
 }
 
 class LogoutFailure extends LogoutState {
-  final ErrorModel error;
+  final String error;
   LogoutFailure(this.error);
 
   @override

@@ -35,7 +35,7 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
 
     await result.fold(
       (error) async {
-        emit(SendEmailResendFailure(error));
+        emit(SendEmailResendFailure(error.message));
         await Future.delayed(const Duration(seconds: 1));
         if (!emit.isDone) emit(ResetPasswordInitial());
       },
@@ -64,7 +64,7 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
 
     await result.fold(
       (error) async {
-        emit(ResetPasswordFailure(error));
+        emit(SendEmailResendFailure(error.message));
         await Future.delayed(const Duration(seconds: 1));
         if (!emit.isDone) emit(ResetPasswordInitial());
       },

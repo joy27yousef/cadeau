@@ -1,5 +1,5 @@
 import 'package:cadeau/core/cache/cacheHelper.dart';
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
 import 'package:cadeau/core/services/services.dart';
 import 'package:flutter/material.dart';

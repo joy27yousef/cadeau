@@ -1,5 +1,5 @@
 import 'package:cadeau/core/cache/cacheHelper.dart';
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'register_event.dart';
@@ -47,7 +47,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
     await result.fold(
       (error) async {
-        emit(RegisterFailure(error));
+        emit(RegisterFailure(error.message));
         await Future.delayed(const Duration(seconds: 1));
         if (!emit.isDone) emit(RegisterInitial());
       },

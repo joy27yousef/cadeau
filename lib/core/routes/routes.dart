@@ -9,25 +9,30 @@ import 'package:cadeau/features/auth/signUp/screen/signup_page.dart';
 import 'package:cadeau/features/auth/verificationAccount/screens/verification_account_page.dart';
 import 'package:cadeau/features/brands/screen/all_brands.dart';
 import 'package:cadeau/features/brands/screen/main_brand_page.dart';
-import 'package:cadeau/features/cart/screens/checkout/checkout_page.dart';
+import 'package:cadeau/features/checkout/screens/checkout_page.dart';
+import 'package:cadeau/features/notification/screens/main_notification.dart';
+import 'package:cadeau/features/notification/screens/notifications_page.dart';
 import 'package:cadeau/features/cart/screens/complete%20payment/complete_ayment_page.dart';
 import 'package:cadeau/features/cart/screens/success_pay.dart';
 import 'package:cadeau/features/categories/screens/main_category_page.dart';
 
 import 'package:cadeau/features/categories/screens/all_categories/all_categories_page.dart';
 import 'package:cadeau/features/occasions/screens/all_ocassion/all_ocassion_page.dart';
+import 'package:cadeau/features/product/screens/add_rating_page.dart';
 import 'package:cadeau/features/product/screens/product_page.dart';
+import 'package:cadeau/features/product/screens/widgets/all_rating_page.dart';
 import 'package:cadeau/features/profile/settings/delete_account/screens/delete_account_page.dart';
 import 'package:cadeau/features/search/screens/saerch_page.dart';
 import 'package:cadeau/features/main_page.dart';
 import 'package:cadeau/features/occasions/screens/main_occasion_page.dart';
 import 'package:cadeau/features/profile/edit_payment/edit_payment_page.dart';
 import 'package:cadeau/features/profile/edit_profile/edit_profile_page.dart';
-import 'package:cadeau/features/profile/reports%20&%20help/help_page.dart';
-import 'package:cadeau/features/profile/reports%20&%20help/reports_help_page.dart';
-import 'package:cadeau/features/profile/reports%20&%20help/send_report_page.dart'
+import 'package:cadeau/features/profile/reports%20&%20help/screens/help_page.dart';
+import 'package:cadeau/features/profile/reports%20&%20help/screens/reports_help_page.dart';
+import 'package:cadeau/features/profile/reports%20&%20help/screens/send_report_page.dart'
     show SendReportPage;
 import 'package:cadeau/features/profile/settings/settings_page.dart';
+import 'package:cadeau/features/social_section/screens/friends_profile_page.dart';
 import 'package:cadeau/features/wishlist/screens/wishlist_page.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -49,6 +54,8 @@ List<GetPage<dynamic>>? routes = [
   //home
   // GetPage(name: '/', page: () => MainPage()),
   GetPage(name: AppRoutes.mainPage, page: () => MainPage()),
+  GetPage(name: AppRoutes.notificationsPage, page: () => NotificationsPage()),
+  GetPage(name: AppRoutes.mainNotification, page: () => MainNotification()),
   GetPage(name: AppRoutes.allOcassionPage, page: () => AllOcassionPage()),
   GetPage(name: AppRoutes.allBrands, page: () => AllBrands()),
   GetPage(name: AppRoutes.saerchPage, page: () => SaerchPage()),
@@ -58,6 +65,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.mainCategoryPage, page: () => MainCategoryPage()),
   GetPage(name: AppRoutes.mainOccasionPage, page: () => MainOccasionPage()),
   GetPage(name: AppRoutes.mainBrandPage, page: () => MainBrandPage()),
+  GetPage(name: AppRoutes.allRatingPage, page: () => AllRatingPage()),
+  GetPage(name: AppRoutes.addRatingPage, page: () => AddRatingPage()),
   //profile
   GetPage(name: AppRoutes.editPaymentPage, page: () => EditPaymentPage()),
   GetPage(name: AppRoutes.editProfilePage, page: () => EditProfilePage()),
@@ -69,4 +78,6 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.checkoutPage, page: () => CheckoutPage()),
   GetPage(name: AppRoutes.completeAymentPage, page: () => CompleteAymentPage()),
   GetPage(name: AppRoutes.successPay, page: () => SuccessPay()),
+  //social
+  GetPage(name: AppRoutes.friendProfilePage, page: () => FriendProfilePage()),
 ];

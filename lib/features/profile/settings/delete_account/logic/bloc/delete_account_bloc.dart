@@ -1,5 +1,5 @@
 import 'package:cadeau/core/cache/cacheHelper.dart';
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 import 'package:cadeau/features/profile/settings/delete_account/data/repository/delete_account_repo.dart';
 import 'package:cadeau/features/profile/settings/delete_account/logic/bloc/delete_account_event.dart';
 import 'package:cadeau/features/profile/settings/delete_account/logic/bloc/delete_account_state.dart';
@@ -38,7 +38,7 @@ class DeleteAccountBloc extends Bloc<DeleteAccountEvent, DeleteAccountState> {
 
     await result.fold(
       (error) async {
-        emit(DeleteAccounFailure(error));
+        emit(DeleteAccounFailure(error.message));
         await Future.delayed(const Duration(seconds: 1));
         if (!emit.isDone) emit(DeleteAccounInitial());
       },

@@ -1,4 +1,4 @@
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 
 class OccasionsModel {
   final bool status;

@@ -1,4 +1,4 @@
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 
 class BrandByIdModel {
   final bool status;
@@ -22,13 +22,20 @@ class BrandByIdModel {
 
 class BrandDetail {
   final Brand brand;
+  final int followersCount;
   final List<Product> products;
 
-  BrandDetail({required this.brand, required this.products});
+  BrandDetail({
+    required this.brand,
+    required this.followersCount,
+    required this.products,
+  });
 
   factory BrandDetail.fromJson(Map<String, dynamic> json) {
     return BrandDetail(
       brand: Brand.fromJson(json[ApiKey.brand] ?? {}),
+
+      followersCount: json[ApiKey.followersCount] ?? 0,
       products:
           (json[ApiKey.products] as List<dynamic>?)
               ?.map((e) => Product.fromJson(e))
@@ -45,6 +52,7 @@ class Brand {
   final String brandDescriptionEnglish;
   final String brandDescriptionArabic;
   final String brandLogo;
+  final String brandCoverImg;
 
   Brand({
     required this.brandId,
@@ -53,6 +61,7 @@ class Brand {
     required this.brandDescriptionEnglish,
     required this.brandDescriptionArabic,
     required this.brandLogo,
+    required this.brandCoverImg,
   });
 
   factory Brand.fromJson(Map<String, dynamic> json) {
@@ -63,6 +72,7 @@ class Brand {
       brandDescriptionEnglish: json[ApiKey.brandDescriptionEnglish] ?? '',
       brandDescriptionArabic: json[ApiKey.brandDescriptionArabic] ?? '',
       brandLogo: json[ApiKey.brandLogo] ?? '',
+      brandCoverImg: json[ApiKey.brandCoverImg] ?? '',
     );
   }
 }

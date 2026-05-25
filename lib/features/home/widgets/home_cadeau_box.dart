@@ -4,6 +4,7 @@ import 'package:get/get_utils/get_utils.dart';
 
 class HomeCadeauBox extends StatelessWidget {
   final bool withMargin;
+
   const HomeCadeauBox({super.key, this.withMargin = false});
 
   @override
@@ -17,7 +18,7 @@ class HomeCadeauBox extends StatelessWidget {
 
           margin: withMargin
               ? const EdgeInsets.symmetric(horizontal: 20)
-              : const EdgeInsets.symmetric(horizontal: 0),
+              : const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
           decoration: BoxDecoration(
             color: Color(0xFFF9F9F9),
             borderRadius: BorderRadius.circular(6),
@@ -26,7 +27,7 @@ class HomeCadeauBox extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Cadeau Boutique'.tr,
+                'Bella Regalo'.tr,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
@@ -36,7 +37,7 @@ class HomeCadeauBox extends StatelessWidget {
               SizedBox(height: 10),
 
               Text(
-                'Send Your Best. For all occasions, ages, friends and family, Cadeau Boutique will always be with you. '
+                'Send Your Best. For all occasions, ages, friends and family, Bella Regalo will always be with you. '
                     .tr,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w400,

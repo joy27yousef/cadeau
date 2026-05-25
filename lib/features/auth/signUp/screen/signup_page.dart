@@ -1,3 +1,4 @@
+import 'package:cadeau/core/services/service_locator.dart';
 import 'package:cadeau/core/widgets/welcome_part.dart';
 import 'package:cadeau/features/auth/signUp/data/repository/register_repo.dart';
 import 'package:cadeau/features/auth/signUp/logic/bloc/register_bloc.dart';
@@ -7,7 +8,6 @@ import 'package:cadeau/features/auth/signUp/screen/widgets/signup_inputs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:cadeau/core/data/apis/dio_consumer.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 class SignupPage extends StatelessWidget {
@@ -17,8 +17,7 @@ class SignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<RegisterBloc>(
       create: (_) {
-        final repo = RegisterRepo(api: DioConsumer(dio: Dio()));
-        return RegisterBloc(repo);
+        return RegisterBloc(sl());
       },
       child: Scaffold(
         body: Padding(

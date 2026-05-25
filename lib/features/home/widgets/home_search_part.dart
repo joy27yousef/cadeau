@@ -15,12 +15,12 @@ class HomeSearchPart extends StatelessWidget {
         children: [
           InkWell(
             onTap: () => Get.toNamed(AppRoutes.saerchPage),
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(10),
             child: Container(
-              height: 40,
+              height: 45,
               padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: Row(
@@ -33,7 +33,7 @@ class HomeSearchPart extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w300,
                         color: AppColor.secondBlack,
-                        fontSize: 15,
+                        fontSize: 16,
                       ),
                     ),
                   ),
@@ -42,7 +42,7 @@ class HomeSearchPart extends StatelessWidget {
                     width: 30,
                     decoration: BoxDecoration(
                       color: AppColor.mainColor,
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: Icon(
                       FontAwesomeIcons.search,

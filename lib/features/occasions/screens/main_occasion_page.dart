@@ -1,10 +1,12 @@
 import 'package:cadeau/core/functions/data_translation.dart';
 import 'package:cadeau/core/routes/app_routes.dart';
+import 'package:cadeau/core/services/service_locator.dart';
 import 'package:cadeau/core/widgets/appbar_screens.dart';
 import 'package:cadeau/core/widgets/empty.dart';
 import 'package:cadeau/core/widgets/product_all_card.dart';
 import 'package:cadeau/features/categories/screens/widgets/product_all_card_shimmer.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_bloc.dart';
+import 'package:cadeau/features/occasions/logic/bloc/occasions_event.dart';
 import 'package:cadeau/features/occasions/logic/bloc/occasions_state.dart';
 import 'package:cadeau/features/product/logic/bloc/product_bloc.dart';
 import 'package:cadeau/features/product/logic/bloc/product_event.dart';
@@ -20,62 +22,67 @@ class MainOccasionPage extends StatelessWidget {
     final args = Get.arguments as Map<String, dynamic>?;
     final String? occasionNameArabic = args?['occasionNameArabic'];
     final String? occasionNameEnglish = args?['occasionNameEnglish'];
+    final String occasionId = args?['occasionId'];
 
     return Scaffold(
       appBar: AppbarScreens(
         title: dataTranslation(occasionNameArabic, occasionNameEnglish),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: BlocBuilder<OccasionsBloc, OccasionsState>(
-          builder: (context, state) {
-            //  Loading
-            if (state is OccasionsLoading) {
-              return const ProductAllCardShimmer();
-            }
+      body: BlocProvider(
+        create: (_) => sl<OccasionsBloc>()..add(LoadOccasionsById(occasionId)),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: BlocBuilder<OccasionsBloc, OccasionsState>(
+            builder: (context, state) {
+              //  Loading
+              if (state is OccasionsByIdLoading) {
+                return const ProductAllCardShimmer();
+              }
 
-            //  Success
-            if (state is OccasionsByIdSuccess) {
-              final data = state.occasions.data;
+              //  Success
+              if (state is OccasionsByIdSuccess) {
+                final data = state.occasions.data;
 
-              //  Products
-              if (data.products.isNotEmpty) {
-                return ProductAllCard(
-                  items: data.products,
-                  getImage: (prod) => prod.productImage,
-                  getTitle: (prod) => dataTranslation(
-                    prod.productNameArabic,
-                    prod.productNameEnglish,
-                  ),
-                  getPrice: (prod) => prod.productPrice,
-                  onTap: (prod) {
-                    final productBloc = context.read<ProductBloc>();
-                    productBloc.add(LoadProductById(prod.productId));
-                    Get.toNamed(AppRoutes.productPage);
-                  },
+                //  Products
+                if (data.products.isNotEmpty) {
+                  return ProductAllCard(
+                    items: data.products,
+                    getImage: (prod) => prod.productImage,
+                    getTitle: (prod) => dataTranslation(
+                      prod.productNameArabic,
+                      prod.productNameEnglish,
+                    ),
+                    getPrice: (prod) => prod.productPrice,
+                    onTap: (prod) {
+                      Get.toNamed(
+                        AppRoutes.productPage,
+                        arguments: {'productId': prod.productId},
+                      );
+                    },
+                  );
+                }
+
+                //  Empty State
+                return Empty(
+                  text1: 'There are currently no products'.tr,
+                  text2: '',
                 );
               }
 
-              //  Empty State
-              return Empty(
-                text1: 'There are currently no products'.tr,
-                text2: '',
-              );
-            }
+              //  Error
+              if (state is OccasionsByIdError) {
+                return Center(
+                  child: Text(
+                    'Error: ${state.message}',
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                );
+              }
 
-            //  Error
-            if (state is OccasionsError) {
-              return Center(
-                child: Text(
-                  'Error: ${state.message}',
-                  style: const TextStyle(color: Colors.red),
-                ),
-              );
-            }
-
-            //  Fallback
-            return const SizedBox.shrink();
-          },
+              //  Fallback
+              return const SizedBox.shrink();
+            },
+          ),
         ),
       ),
     );

@@ -1,63 +1,77 @@
-import 'package:cadeau/core/data/apis/api_consumer.dart';
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
-import 'package:cadeau/core/data/error/errorModel.dart';
-import 'package:cadeau/core/data/error/serverException.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
+import 'package:cadeau/core/errors/exceptions.dart';
+import 'package:cadeau/core/errors/failures.dart';
+import 'package:cadeau/core/network/apis/api_consumer.dart';
+import 'package:cadeau/core/network/network_info.dart';
 import 'package:cadeau/features/wishlist/data/models/add_remove_wishlist.dart';
 import 'package:cadeau/features/wishlist/data/models/my_wishlist_model.dart';
 import 'package:dartz/dartz.dart';
 
 class WishlistRepo {
   final ApiConsumer api;
+  final NetworkInfo networkInfo;
 
-  WishlistRepo({required this.api});
+  WishlistRepo({required this.api, required this.networkInfo});
 
-  Future<Either<ErrorModel, AddRemoveWishlistModel>> addToWishlist(
+  Future<Either<Failure, AddRemoveWishlistModel>> addToWishlist(
     String id,
   ) async {
-    try {
-      final response = await api.post(
-        AppEndpoint.wishlistAdd,
-        data: {ApiKey.productId: id},
-        withToken: true,
-      );
-      final item = AddRemoveWishlistModel.fromJson(response);
-      return Right(item);
-    } on ServerException catch (e) {
-      return Left(e.errModel);
-    } catch (e) {
-      return Left(ErrorModel(status: false, message: e.toString()));
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await api.post(
+          AppEndpoint.wishlistAdd,
+          data: {ApiKey.productId: id},
+          withToken: true,
+        );
+        final item = AddRemoveWishlistModel.fromJson(response);
+        return Right(item);
+      } on ServerException catch (e) {
+        return Left(ServerFailure(e.message, statusCode: e.statusCode));
+      } catch (e) {
+        return Left(ServerFailure('😭😭Error in: ${e.toString()}'));
+      }
+    } else {
+      return Left(NetworkFailure());
     }
   }
 
-  Future<Either<ErrorModel, AddRemoveWishlistModel>> removeFromWishlist(
+  Future<Either<Failure, AddRemoveWishlistModel>> removeFromWishlist(
     String id,
   ) async {
-    try {
-      final response = await api.delete(
-        AppEndpoint.wishlistRemove,
-        data: {ApiKey.productId: id},
-        withToken: true,
-      );
-      final item = AddRemoveWishlistModel.fromJson(response);
-      return Right(item);
-    } on ServerException catch (e) {
-      return Left(e.errModel);
-    } catch (e) {
-      return Left(ErrorModel(status: false, message: e.toString()));
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await api.delete(
+          AppEndpoint.wishlistRemove,
+          data: {ApiKey.productId: id},
+          withToken: true,
+        );
+        final item = AddRemoveWishlistModel.fromJson(response);
+        return Right(item);
+      } on ServerException catch (e) {
+        return Left(ServerFailure(e.message, statusCode: e.statusCode));
+      } catch (e) {
+        return Left(ServerFailure('😭😭Error in: ${e.toString()}'));
+      }
+    } else {
+      return Left(NetworkFailure());
     }
   }
 
-  Future<Either<ErrorModel, MyWishlistModel>> getMyWishlist() async {
-    try {
-      final response = await api.get(AppEndpoint.wishlist, withToken: true);
+  Future<Either<Failure, MyWishlistModel>> getMyWishlist() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await api.get(AppEndpoint.wishlist, withToken: true);
 
-      final item = MyWishlistModel.fromJson(response);
+        final item = MyWishlistModel.fromJson(response);
 
-      return Right(item);
-    } on ServerException catch (e) {
-      return Left(e.errModel);
-    } catch (e) {
-      return Left(ErrorModel(status: false, message: e.toString()));
+        return Right(item);
+      } on ServerException catch (e) {
+        return Left(ServerFailure(e.message, statusCode: e.statusCode));
+      } catch (e) {
+        return Left(ServerFailure('😭😭Error in: ${e.toString()}'));
+      }
+    } else {
+      return Left(NetworkFailure());
     }
   }
 }

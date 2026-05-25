@@ -27,7 +27,7 @@ class DeleteAccountBottom extends StatelessWidget {
           );
           Get.offAllNamed(AppRoutes.login);
         } else if (state is DeleteAccounFailure) {
-          showMessage(context, message: state.error.message, isSuccess: false);
+          showMessage(context, message: state.error, isSuccess: false);
         }
       },
       builder: (context, state) {

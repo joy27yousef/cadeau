@@ -1,295 +1,307 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cadeau/features/search/logic/bloc/search_bloc.dart';
+import 'package:cadeau/features/search/logic/bloc/search_event.dart';
 import 'package:cadeau/core/constant/app_color.dart';
+import 'package:get/get_utils/get_utils.dart';
 
-void showFilters({
-  required BuildContext context,
-  required List<Map<String, String>> categories,
-  required List<Map<String, String>> occasions,
-  required List<Map<String, String>> brands,
-  required Function({
-    String? categoryId,
-    String? occasionId,
-    String? brandId,
-    double? minPrice,
-    double? maxPrice,
-    String? color,
-    String? size,
-    String? storage,
-  })
-  onApply,
-}) {
-  Map<String, String>? selectedCategory;
-  Map<String, String>? selectedOccasion;
-  Map<String, String>? selectedBrand;
-  double? minPrice;
-  double? maxPrice;
-  String? color;
-  String? size;
-  String? storage;
+class FilterBottomSheet extends StatefulWidget {
+  const FilterBottomSheet({super.key});
 
-  // Example options, يمكن تعديلها حسب المشروع
-  List<String> colors = ['Red', 'Blue', 'Green', 'Yellow'];
-  List<String> sizes = ['S', 'M', 'L', 'XL'];
-  List<String> storages = ['32GB', '64GB', '128GB', '256GB'];
+  @override
+  State<FilterBottomSheet> createState() => _FilterBottomSheetState();
+}
 
-  Get.bottomSheet(
-    StatefulBuilder(
-      builder: (context, setState) {
-        return Container(
-          padding: const EdgeInsets.all(20),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25),
-              topRight: Radius.circular(25),
+class _FilterBottomSheetState extends State<FilterBottomSheet> {
+  final List<Map<String, dynamic>> colorsList = [
+    {'name': 'Red', 'color': Colors.red},
+    {'name': 'Blue', 'color': Colors.blue},
+    {'name': 'Green', 'color': Colors.green},
+    {'name': 'Yellow', 'color': Colors.yellow},
+    {'name': 'Purple', 'color': Colors.purple},
+    {'name': 'Orange', 'color': Colors.orange},
+    {'name': 'Black', 'color': Colors.black},
+  ];
+  final TextEditingController minPriceController = TextEditingController();
+  final TextEditingController maxPriceController = TextEditingController();
+  final TextEditingController storageController = TextEditingController();
+  final TextEditingController sizeController = TextEditingController();
+  String? selectedCategoryId;
+  String? selectedColor;
+
+  @override
+  void dispose() {
+    minPriceController.dispose();
+    maxPriceController.dispose();
+    storageController.dispose();
+    sizeController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(20, 25, 20, 40),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 10, spreadRadius: 2),
+        ],
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 45,
+                height: 5,
+                margin: const EdgeInsets.only(bottom: 25),
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
             ),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+
+            Text(
+              "Filter Options".tr,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontSize: 18,
+                color: AppColor.black,
+              ),
+            ),
+            const SizedBox(height: 25),
+
+            _buildFilterTitle("Price Range".tr),
+            const SizedBox(height: 12),
+            Row(
               children: [
-                // Drag handle
-                Container(
-                  width: 40,
-                  height: 4,
-                  margin: const EdgeInsets.only(bottom: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(10),
+                Expanded(
+                  child: _buildTextField(
+                    "Min".tr,
+                    minPriceController,
+                    TextInputType.number,
                   ),
                 ),
-
-                Text(
-                  'Filter Products',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: AppColor.secondBlack,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                const SizedBox(width: 15),
+                Expanded(
+                  child: _buildTextField(
+                    "Max".tr,
+                    maxPriceController,
+                    TextInputType.number,
                   ),
-                ),
-                const SizedBox(height: 20),
-
-                // Category Dropdown
-                DropdownButtonFormField<Map<String, String>>(
-                  value: selectedCategory,
-                  decoration: const InputDecoration(labelText: 'Category'),
-                  items: categories
-                      .map(
-                        (c) => DropdownMenuItem(
-                          value: c,
-                          child: Text(c['name'] ?? ''),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (value) =>
-                      setState(() => selectedCategory = value),
-                ),
-                const SizedBox(height: 15),
-
-                // Occasion Dropdown
-                DropdownButtonFormField<Map<String, String>>(
-                  value: selectedOccasion,
-                  decoration: const InputDecoration(labelText: 'Occasion'),
-                  items: occasions
-                      .map(
-                        (o) => DropdownMenuItem(
-                          value: o,
-                          child: Text(o['name'] ?? ''),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (value) =>
-                      setState(() => selectedOccasion = value),
-                ),
-                const SizedBox(height: 15),
-
-                // Brand Dropdown
-                DropdownButtonFormField<Map<String, String>>(
-                  value: selectedBrand,
-                  decoration: const InputDecoration(labelText: 'Brand'),
-                  items: brands
-                      .map(
-                        (b) => DropdownMenuItem(
-                          value: b,
-                          child: Text(b['name'] ?? ''),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (value) => setState(() => selectedBrand = value),
-                ),
-                const SizedBox(height: 15),
-
-                // Price Range
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: 'Min Price',
-                        ),
-                        keyboardType: TextInputType.number,
-                        onChanged: (val) => minPrice = double.tryParse(val),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: 'Max Price',
-                        ),
-                        keyboardType: TextInputType.number,
-                        onChanged: (val) => maxPrice = double.tryParse(val),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
-
-                // Color Selection
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Color',
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                ),
-                Wrap(
-                  spacing: 10,
-                  children: colors.map((c) {
-                    bool isSelected = color == c;
-                    return ChoiceChip(
-                      label: Text(c),
-                      selected: isSelected,
-                      onSelected: (_) => setState(() => color = c),
-                      selectedColor: AppColor.mainColor,
-                      backgroundColor: Colors.grey.shade200,
-                      labelStyle: TextStyle(
-                        color: isSelected ? Colors.white : Colors.black,
-                      ),
-                    );
-                  }).toList(),
-                ),
-                const SizedBox(height: 10),
-
-                // Size Selection
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Size',
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                ),
-                Wrap(
-                  spacing: 10,
-                  children: sizes.map((s) {
-                    bool isSelected = size == s;
-                    return ChoiceChip(
-                      label: Text(s),
-                      selected: isSelected,
-                      onSelected: (_) => setState(() => size = s),
-                      selectedColor: AppColor.mainColor,
-                      backgroundColor: Colors.grey.shade200,
-                      labelStyle: TextStyle(
-                        color: isSelected ? Colors.white : Colors.black,
-                      ),
-                    );
-                  }).toList(),
-                ),
-                const SizedBox(height: 10),
-
-                // Storage Selection
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Storage',
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                ),
-                Wrap(
-                  spacing: 10,
-                  children: storages.map((s) {
-                    bool isSelected = storage == s;
-                    return ChoiceChip(
-                      label: Text(s),
-                      selected: isSelected,
-                      onSelected: (_) => setState(() => storage = s),
-                      selectedColor: AppColor.mainColor,
-                      backgroundColor: Colors.grey.shade200,
-                      labelStyle: TextStyle(
-                        color: isSelected ? Colors.white : Colors.black,
-                      ),
-                    );
-                  }).toList(),
-                ),
-                const SizedBox(height: 20),
-
-                // Buttons Row
-                Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton(
-                        onPressed: () {
-                          setState(() {
-                            selectedCategory = null;
-                            selectedOccasion = null;
-                            selectedBrand = null;
-                            minPrice = null;
-                            maxPrice = null;
-                            color = null;
-                            size = null;
-                            storage = null;
-                          });
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: AppColor.mainColor),
-                          minimumSize: const Size(double.infinity, 50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: const Text('Clear Filters'),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          onApply(
-                            categoryId: selectedCategory?['id'],
-                            occasionId: selectedOccasion?['id'],
-                            brandId: selectedBrand?['id'],
-                            minPrice: minPrice,
-                            maxPrice: maxPrice,
-                            color: color,
-                            size: size,
-                            storage: storage,
-                          );
-                          Get.back();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColor.mainColor,
-                          minimumSize: const Size(double.infinity, 50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: const Text('Apply Filters'),
-                      ),
-                    ),
-                  ],
                 ),
               ],
             ),
-          ),
-        );
-      },
-    ),
-    backgroundColor: Colors.transparent,
-    isScrollControlled: true,
-    barrierColor: Colors.black.withOpacity(0.4),
-    elevation: 10,
-    enterBottomSheetDuration: const Duration(milliseconds: 400),
-    exitBottomSheetDuration: const Duration(milliseconds: 250),
-  );
+            const SizedBox(height: 20),
+
+            _buildFilterTitle("Specifications".tr),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: _buildTextField(
+                    "Storage (GB)".tr,
+                    storageController,
+                    TextInputType.text,
+                  ),
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                  child: _buildTextField(
+                    "Size",
+                    sizeController,
+                    TextInputType.text,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 25),
+
+            _buildFilterTitle("Color".tr),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 10,
+              runSpacing: 8,
+              children: colorsList.map((colorMap) {
+                final colorName = colorMap['name'] as String;
+                final colorValue = colorMap['color'] as Color;
+                final isSelected = selectedColor == colorName;
+
+                return GestureDetector(
+                  onTap: () => setState(
+                    () => selectedColor = isSelected ? null : colorName,
+                  ),
+                  child: AnimatedContainer(
+                    duration: const Duration(
+                      milliseconds: 200,
+                    ), // تأثير حركي عند الاختيار
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: colorValue,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: isSelected
+                            ? Colors.grey.shade100
+                            : Colors.transparent,
+                        width: 2,
+                      ),
+                      boxShadow: [
+                        if (isSelected)
+                          BoxShadow(
+                            color: colorValue.withOpacity(0.4),
+                            blurRadius: 6,
+                            offset: const Offset(0, 3),
+                          ),
+                      ],
+                    ),
+                    // إضافة علامة "صح" صغيرة عند الاختيار
+                    child: isSelected
+                        ? Center(
+                            child: Icon(
+                              Icons.check,
+                              color: colorValue.computeLuminance() > 0.5
+                                  ? Colors.black
+                                  : Colors.white,
+                              size: 20,
+                            ),
+                          )
+                        : null,
+                  ),
+                );
+              }).toList(),
+            ),
+
+            const SizedBox(height: 40),
+
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      minPriceController.clear();
+                      maxPriceController.clear();
+                      storageController.clear();
+                      sizeController.clear();
+                      setState(() => selectedColor = null);
+                      context.read<SearchBloc>().add(ResetFilters());
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Reset".tr,
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                  flex: 2,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColor.mainColor,
+                      elevation: 0,
+
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () {
+                      context.read<SearchBloc>().add(
+                        FilterProducts(
+                          minPrice: minPriceController.text.isNotEmpty
+                              ? minPriceController.text
+                              : null,
+                          maxPrice: maxPriceController.text.isNotEmpty
+                              ? maxPriceController.text
+                              : null,
+                          storage: storageController.text.isNotEmpty
+                              ? storageController.text
+                              : null,
+                          size: sizeController.text.isNotEmpty
+                              ? sizeController.text
+                              : null,
+                          color: selectedColor,
+                        ),
+                      );
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Apply Filters".tr,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(
+    String label,
+    TextEditingController controller,
+    TextInputType type,
+  ) {
+    return TextField(
+      controller: controller,
+      keyboardType: type,
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+          fontSize: 14,
+          color: AppColor.secondBlack,
+          fontWeight: FontWeight.normal,
+        ),
+        filled: true,
+        hoverColor: AppColor.mainColor,
+
+        fillColor: Colors.grey[50],
+        focusColor: AppColor.mainColor,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.grey[200]!),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: AppColor.lightScondary, width: 1),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFilterTitle(String title) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+          fontSize: 15,
+          color: AppColor.secondBlack,
+          fontWeight: FontWeight.normal,
+        ),
+      ),
+    );
+  }
 }

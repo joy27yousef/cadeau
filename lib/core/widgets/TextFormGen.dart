@@ -64,7 +64,7 @@ class TextFormGen extends StatelessWidget {
             : null,
 
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             color: fillcolor == null
                 ? Colors.grey.shade300
@@ -73,11 +73,11 @@ class TextFormGen extends StatelessWidget {
           ),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: Colors.grey.shade400, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: AppColor.mainColor, width: 1),
         ),
       ),

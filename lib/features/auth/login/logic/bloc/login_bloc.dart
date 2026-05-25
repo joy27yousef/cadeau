@@ -1,5 +1,5 @@
 import 'package:cadeau/core/cache/cacheHelper.dart';
-import 'package:cadeau/core/data/apis/app_endpoint.dart';
+import 'package:cadeau/core/constant/app_endpoint.dart';
 import 'package:cadeau/features/auth/login/data/repository/login_repo.dart';
 import 'package:cadeau/features/auth/login/logic/bloc/login_event.dart';
 import 'package:cadeau/features/auth/login/logic/bloc/login_state.dart';
@@ -38,7 +38,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     await result.fold(
       (error) async {
-        emit(LoginFailure(error));
+        emit(LoginFailure(error.message));
         await Future.delayed(const Duration(seconds: 1));
         if (!emit.isDone) emit(LoginInitial());
       },

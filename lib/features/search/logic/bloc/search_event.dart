@@ -23,3 +23,5 @@ class FilterProducts extends SearchEvent {
     this.size,
   });
 }
+
+class ResetFilters extends SearchEvent {}

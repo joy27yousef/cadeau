@@ -7,7 +7,6 @@ class WishlistSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.all(20),
       itemCount: 4,
       itemBuilder: (context, index) {
         return Padding(

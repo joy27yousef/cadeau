@@ -1,7 +1,9 @@
 class AppImages {
+  static const String apple = "assets/images/apple.jpg";
   static const String google = "assets/images/google.png";
   static const String logo = "assets/images/logo.png";
   static const String logout = "assets/images/logout.png";
+  static const String delete = "assets/images/delete.png";
   //home
   static const String ads = "assets/images/home/ads.png";
   static const String ads1 = "assets/images/home/ads1.png";
@@ -11,4 +13,7 @@ class AppImages {
   //card
   static const String pay = "assets/images/pay.png";
   static const String empty = "assets/images/empty.png";
+  //profile
+  static const String person = "assets/images/person.png";
+  static const String iconPerson = "assets/images/iconPerson.png";
 }

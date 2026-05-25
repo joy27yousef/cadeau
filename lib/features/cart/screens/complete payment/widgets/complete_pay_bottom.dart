@@ -13,7 +13,7 @@ class CompletePayBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CartSummary(),
+        // CartSummary(),
         BoxButtom(
           color: AppColor.mainColor,
           ontapfun: () {

@@ -10,7 +10,6 @@ import 'package:cadeau/features/search/logic/bloc/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class ProductPriceList extends StatelessWidget {
   const ProductPriceList({super.key});
@@ -22,6 +21,19 @@ class ProductPriceList extends StatelessWidget {
         //  Loading
         if (state is SearchLoading) {
           return const ProductAllCardShimmer();
+        }
+        if (state is SearchInitial) {
+          return Column(
+            children: [
+              SizedBox(height: 150),
+              Center(
+                child: Empty(
+                  text1: 'Have fun and find your gift'.tr,
+                  text2: '',
+                ),
+              ),
+            ],
+          );
         }
 
         //  Success
@@ -39,9 +51,10 @@ class ProductPriceList extends StatelessWidget {
               ),
               getPrice: (prod) => prod.productPriceFrom,
               onTap: (prod) {
-                final productBloc = context.read<ProductBloc>();
-                productBloc.add(LoadProductById(prod.productId));
-                Get.toNamed(AppRoutes.productPage);
+                Get.toNamed(
+                  AppRoutes.productPage,
+                  arguments: {'productId': prod.productId},
+                );
               },
             );
           }

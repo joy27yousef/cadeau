@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 
 class Empty extends StatelessWidget {
   final String text1;
+  final bool? isSmoll;
   final String text2;
-  const Empty({super.key, required this.text1, required this.text2});
+  const Empty({
+    super.key,
+    required this.text1,
+    required this.text2,
+    this.isSmoll = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,7 @@ class Empty extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(AppImages.empty, height: 180),
+          Image.asset(AppImages.empty, height: isSmoll == true ? 110 : 180),
           const SizedBox(height: 10),
           Text(
             text1,
@@ -22,7 +28,7 @@ class Empty extends StatelessWidget {
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
               color: AppColor.secondBlack,
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: isSmoll == true ? 14 : 18,
             ),
           ),
           SizedBox(height: 5),

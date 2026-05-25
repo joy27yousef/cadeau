@@ -7,8 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   final WishlistRepo repo;
 
-  MyWishlistModel? cachedWishlist;
-
   WishlistBloc({required this.repo}) : super(WishlistInitial()) {
     on<LoadWishlist>(loadWishlist);
     on<AddWishlistEvent>(addWishlist);
@@ -28,7 +26,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
         emit(WishlistError(error.message));
       },
       (wishlist) {
-        cachedWishlist = wishlist;
         emit(LoadWishlistSuccess(wishlist));
       },
     );
@@ -65,12 +62,10 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
       (error) {
         emit(WishlistError(error.message));
       },
-      (wishlist) {
-        cachedWishlist?.data?.wishlistItems.removeWhere(
-          (e) => e.id == event.productId,
-        );
+      (successMessage) {
+        add(LoadWishlist());
 
-        emit(RemoveWishlistSuccess(wishlist));
+        emit(RemoveWishlistSuccess(successMessage));
       },
     );
   }

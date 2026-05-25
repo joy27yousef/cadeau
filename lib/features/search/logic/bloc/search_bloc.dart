@@ -11,7 +11,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   SearchBloc({required this.repo}) : super(SearchInitial()) {
     on<FilterProducts>(submitFilters);
+    on<ResetFilters>((event, emit) {
+      emit(SearchInitial());
+    });
   }
+
   Future<void> submitFilters(
     FilterProducts event,
     Emitter<SearchState> emit,
@@ -20,11 +24,17 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     final result = await repo.getFilteredProducts(
       categoryId: event.categoryId,
       brandId: event.brandId,
-      priceFrom: event.minPrice != null
+      occasionId: event.occasionId,
+      name: event.name,
+      storage: event.storage,
+      size: event.size,
+      color: event.color,
+      minPrice: event.minPrice != null
           ? double.tryParse(event.minPrice!)
           : null,
-      priceTo: event.maxPrice != null ? double.tryParse(event.maxPrice!) : null,
-      searchQuery: event.name,
+      maxPrice: event.maxPrice != null
+          ? double.tryParse(event.maxPrice!)
+          : null,
     );
 
     result.fold((error) => emit(SearchError(error.message)), (model) {

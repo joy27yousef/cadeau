@@ -29,15 +29,19 @@ class Love extends StatelessWidget {
                 current is AddWishlistSuccess ||
                 current is RemoveWishlistSuccess,
             builder: (context, state) {
-              final liked =
-                  context
-                      .watch<WishlistBloc>()
-                      .cachedWishlist
-                      ?.data
-                      ?.wishlistItems
-                      .any((e) => e.id == id) ??
-                  false;
+              // final liked =
+              //     context
+              //         .watch<WishlistBloc>()
+              //         .cachedWishlist
+              //         ?.data
+              //         ?.wishlistItems
+              //         .any((e) => e.id == id) ??
+              //     false;
+              final state = context.watch<WishlistBloc>().state;
 
+              final liked = state is LoadWishlistSuccess
+                  ? state.wishlist.data!.wishlistItems.any((e) => e.id == id)
+                  : false;
               return LikeButton(
                 size: 25,
                 isLiked: liked,

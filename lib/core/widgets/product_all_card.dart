@@ -2,6 +2,8 @@ import 'package:cadeau/core/constant/app_color.dart';
 import 'package:cadeau/core/constant/app_images.dart';
 import 'package:cadeau/core/widgets/love.dart';
 import 'package:cadeau/features/wishlist/logic/bloc/wishlist_bloc.dart';
+import 'package:cadeau/features/wishlist/logic/bloc/wishlist_state.dart'
+    show LoadWishlistSuccess;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -64,7 +66,7 @@ class ProductAllCard extends StatelessWidget {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color: Colors.grey.shade100,
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
                             image: imagePath.isNotEmpty
                                 ? NetworkImage(imagePath)
@@ -109,8 +111,15 @@ class ProductAllCard extends StatelessWidget {
   }
 }
 
+// bool isProductInWishlist(BuildContext context, String productId) {
+//   final bloc = context.watch<WishlistBloc>();
+//   final items = bloc.cachedWishlist?.data?.wishlistItems ?? [];
+//   return items.any((e) => e.id == productId);
+// }
 bool isProductInWishlist(BuildContext context, String productId) {
-  final bloc = context.watch<WishlistBloc>();
-  final items = bloc.cachedWishlist?.data?.wishlistItems ?? [];
-  return items.any((e) => e.id == productId);
+  final state = context.watch<WishlistBloc>().state;
+  if (state is LoadWishlistSuccess) {
+    return state.wishlist.data!.wishlistItems.any((e) => e.id == productId);
+  }
+  return false;
 }

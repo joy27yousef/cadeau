@@ -21,7 +21,7 @@ class VeriificationAccountButtom extends StatelessWidget {
           showMessage(context, message: state.model.message!, isSuccess: true);
           Get.offAllNamed(AppRoutes.login);
         } else if (state is VerificationAccountFailure) {
-          showMessage(context, message: state.error.message, isSuccess: false);
+          showMessage(context, message: state.error, isSuccess: false);
         }
       },
       builder: (context, state) {

@@ -30,23 +30,23 @@ class AllBrands extends StatelessWidget {
               BlocBuilder<BrandsBloc, BrandsState>(
                 builder: (context, state) {
                   //  Loading
-                  if (state is BrandsLoading) {
+                  if (state.isBrandsLoading) {
                     return const ProductAllCardShimmer();
                   }
 
                   //  Error
-                  if (state is BrandsError) {
+                  if (state.brandsErrorMessage!=null) {
                     return Center(
                       child: Text(
-                        state.message,
+                        state.brandsErrorMessage!,
                         style: const TextStyle(color: Colors.red),
                         textAlign: TextAlign.center,
                       ),
                     );
                   }
 
-                  if (state is BrandsSuccess) {
-                    final brands = state.brand.data;
+                  if (state.brandsModel != null) {
+                    final brands = state.brandsModel!.data;
                     if (brands.isNotEmpty) {
                       return CategoriesAllpage(
                         items: brands,

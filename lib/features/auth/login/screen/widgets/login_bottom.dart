@@ -48,11 +48,7 @@ class LoginBottom extends StatelessWidget {
               );
               Get.offAllNamed(AppRoutes.mainPage);
             } else if (state is LoginFailure) {
-              showMessage(
-                context,
-                message: state.error.message,
-                isSuccess: false,
-              );
+              showMessage(context, message: state.error, isSuccess: false);
             }
           },
           builder: (context, state) {
@@ -70,8 +66,9 @@ class LoginBottom extends StatelessWidget {
           },
         ),
 
-        SizedBox(height: 18),
+        SizedBox(height: 15),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Don’t have an account? '.tr,
